@@ -40,8 +40,11 @@ typedef struct	s_player
 {
 	float	x;
 	float	y;
-	double	ray_x;
-	double	ray_y;
+	double	hit1_x;
+	double	hit1_y;
+	double	hit2_x;
+	double	hit2_y;
+	char	dir;
 	int	angle;
 }		t_player;
 
@@ -94,7 +97,12 @@ void    ft_raycast(t_mlx *mlx, t_img *buff, float angle);
 int	ft_get_len(float cos, float sin);
 void	ft_vector(t_mlx *mlx, t_img *buff);
 int	ft_angle(int angle);
-double	ft_find_hypo(t_mlx *mlx, double x, double y, double angle);
+double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle);
+//...........................................................DIRECTION
+double  ft_se(t_mlx *mlx, double x, double y, double angle);
+double  ft_sw(t_mlx *mlx, double x, double y, double angle);
+double  ft_nw(t_mlx *mlx, double x, double y, double angle);
+double	ft_ne(t_mlx *mlx, double x, double y, double angle);
 //...........................................................FRAME
 int	ft_next_frame(int keycode, t_mlx *mlx);
 //...........................................................KEYCODE

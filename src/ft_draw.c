@@ -4,8 +4,11 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 {
 	char *dst;
 
-	dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+	if ((x >= 0 && x <= 1000) && (y >= 0 && y <= 1000))
+	{
+		dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
+		*(unsigned int*)dst = color;
+	}
 }
 
 void	ft_draw_line(t_img *buff, int x, int y)

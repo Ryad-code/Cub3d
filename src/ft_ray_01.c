@@ -40,7 +40,7 @@ void	ft_vision(t_mlx *mlx, t_img *buff)
 	{
 		tmp = (PI / 180) * (angle);
 		ft_raycast(mlx, buff, tmp);
-		res = ft_get_len(mlx->player.ray_x - mlx->player.x, mlx->player.ray_y - mlx->player.y);
+		res = ft_get_len(mlx->player.hit1_x - mlx->player.x, mlx->player.hit1_y - mlx->player.y);
 		tmp = (PI / 180) * (mlx->player.angle - angle);
 		res = res * (1 / cos(tmp));
 		if ( res > 1000)
