@@ -17,7 +17,7 @@ void	ft_raycast(t_mlx *mlx, t_img *buff, float angle)
 	i = 1;
 //	while (mlx->map.grid[(int)(mlx->player.y + (sin(angle) * i)) / 100]
 //		[(int)(mlx->player.x + (cos(angle) * i)) / 100] != '1')
-	while (i < 20)
+	while (i < 60)
 	{
 		my_pixel_put(buff, (int)nearbyint((mlx->player.x  * B_SIZE) + (cos(angle) * i)), (int)nearbyint((mlx->player.y * B_SIZE) + (sin(angle) * i)), 0x0FF00FF);
 		i++;

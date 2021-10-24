@@ -99,10 +99,10 @@ void	ft_vector(t_mlx *mlx, t_img *buff);
 int	ft_angle(int angle);
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle);
 //...........................................................DIRECTION
-double  ft_se(t_mlx *mlx, double x, double y, double angle);
-double  ft_sw(t_mlx *mlx, double x, double y, double angle);
-double  ft_nw(t_mlx *mlx, double x, double y, double angle);
-double	ft_ne(t_mlx *mlx, double x, double y, double angle);
+double  ft_se(t_mlx *mlx, double x, double y, double angle, int square[]);
+double  ft_sw(t_mlx *mlx, double x, double y, double angle, int square[]);
+double  ft_nw(t_mlx *mlx, double x, double y, double angle, int square[]);
+double	ft_ne(t_mlx *mlx, double x, double y, double angle, int square[]);
 //...........................................................FRAME
 int	ft_next_frame(int keycode, t_mlx *mlx);
 //...........................................................KEYCODE

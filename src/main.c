@@ -12,7 +12,6 @@ int main(int ac, char **av)
 	ft_get_infos(&mlx, av[1]);	//GETTING INFOS (POS, MAP, TEXTURES)
 	ft_parse_text(&mlx);		//INFOS PARSING
 
-
 	printf("x = %f\n", mlx.player.x);
 	printf("y = %f\n", mlx.player.y);
 	mlx.mlx = mlx_init();//..............INIT WINDOW
