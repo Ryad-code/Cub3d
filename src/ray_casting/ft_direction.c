@@ -203,15 +203,20 @@ double	ft_ne(t_mlx *mlx, double x, double y, double angle)
 	angle_b = (PI / 2) - angle_a;
 	if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
 	{
+		hypo = seg_x / cos(angle_a);
+		mlx->player.hit1_x = (int)mlx->player.x + 1;
+		mlx->player.hit1_y = (int)mlx->player.y + y - sqrt((hypo * hypo) - (seg_x * seg_x));
 		while (mlx->player.hit1_y >= 0 && mlx->player.hit1_x <= 10
 		&& ft_check_hit(mlx, 'e' , mlx->player.hit1_x, mlx->player.hit1_y) != '1')
 		{
 			hypo = (seg_x + i) / cos(angle_a);
-			mlx->player.hit1_x = (int)mlx->player.x + 1 + i;;
+			mlx->player.hit1_x = (int)mlx->player.x + 1 + i;
 			mlx->player.hit1_y = (int)mlx->player.y + y - sqrt((hypo * hypo) - ((seg_x + i) * (seg_x + i)));
 			i++;
 		}
 		i = 0;
+		mlx->player.hit2_x = (int)mlx->player.x + x + sqrt(((seg_y / cos(angle_b)) * (seg_y / cos(angle_b))) - (seg_y * seg_y));
+		mlx->player.hit2_y = (int)mlx->player.y;
 		while (mlx->player.hit2_y >= 0 && mlx->player.hit2_x <= 10
 		&& ft_check_hit(mlx, 'n' , mlx->player.hit2_x, mlx->player.hit2_y) != '1')
 		{
@@ -222,6 +227,9 @@ double	ft_ne(t_mlx *mlx, double x, double y, double angle)
 	}
 	else if (seg_y / cos(angle_b) <= seg_x / cos(angle_a))
 	{
+		hypo = seg_y / cos(angle_b);
+		mlx->player.hit1_x = (int)mlx->player.x + x + sqrt((hypo * hypo) - (seg_y * seg_y));
+		mlx->player.hit1_y = (int)mlx->player.y;
 		while (mlx->player.hit1_y >= 0 && mlx->player.hit1_x <= 10
 		&& ft_check_hit(mlx, 'n' , mlx->player.hit1_x, mlx->player.hit1_y) != '1')
 		{
@@ -231,6 +239,8 @@ double	ft_ne(t_mlx *mlx, double x, double y, double angle)
 			i++;
 		}
 		i = 0;
+		mlx->player.hit2_x = (int)mlx->player.x + 1;
+		mlx->player.hit2_y = (int)mlx->player.y + y - sqrt(((seg_x / cos(angle_a)) * (seg_x / cos(angle_a))) - (seg_x * seg_x));
 		while (mlx->player.hit2_y >= 0 && mlx->player.hit2_x <= 10
 		&& ft_check_hit(mlx, 'e' , mlx->player.hit2_x, mlx->player.hit2_y) != '1')
 		{
@@ -244,8 +254,6 @@ double	ft_ne(t_mlx *mlx, double x, double y, double angle)
 
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y)
 {
-//	printf("hx = %d | hy = %d\n", (unsigned int)x, (unsigned int)y);
-//
 	if (hit == 'e')
 		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
 	else if (hit == 's')
