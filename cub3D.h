@@ -44,6 +44,8 @@ typedef struct	s_player
 	double	hit1_y;
 	double	hit2_x;
 	double	hit2_y;
+	double	f_hit_x;
+	double	f_hit_y;
 	char	dir;
 	int	angle;
 }		t_player;
@@ -94,11 +96,14 @@ void	ft_draw_grid(t_mlx *mlx, t_img *buff);
 //...........................................................RAY
 void	ft_vision(t_mlx *mlx, t_img *buff);
 void    ft_raycast(t_mlx *mlx, t_img *buff, float angle);
-int	ft_get_len(float cos, float sin);
 void	ft_vector(t_mlx *mlx, t_img *buff);
 int	ft_angle(int angle);
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle);
 //...........................................................DIRECTION
+void    ft_east(t_mlx *mlx);
+void    ft_west(t_mlx *mlx);
+void    ft_south(t_mlx *mlx);
+void    ft_north(t_mlx *mlx);
 double  ft_se(t_mlx *mlx, double x, double y, double angle);
 double  ft_sw(t_mlx *mlx, double x, double y, double angle);
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);

@@ -27,13 +27,11 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 
 	tmp = (PI / 180) * mlx->player.angle;
 //.................................................................
-//	ft_draw_grid(mlx, buff);
 	my_pixel_put(buff, mlx->player.x * B_SIZE, mlx->player.y * B_SIZE, 0x0FF00FF);
 //.................................................................
 	ft_ray_caster(mlx, mlx->player.x - (int)mlx->player.x, mlx->player.y - (int)mlx->player.y, tmp);
 	ft_raycast(mlx, buff, tmp);
-	my_pixel_put(buff, mlx->player.hit1_x * B_SIZE, mlx->player.hit1_y * B_SIZE, 0x0FF00FF);//collision point
-	my_pixel_put(buff, mlx->player.hit2_x * B_SIZE, mlx->player.hit2_y * B_SIZE, 0xFFFFFF);
+	my_pixel_put(buff, mlx->player.f_hit_x * B_SIZE, mlx->player.f_hit_y * B_SIZE, 0xFFFFFF);
 }
 
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
@@ -55,38 +53,28 @@ double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
 	else if (direction == 4)
 		hypo = ft_ne(mlx, x, y, angle);
 	else if (direction == 5)
-	{
-		mlx->player.hit1_x = (int)mlx->player.x + 1;
-		mlx->player.hit1_y = (int)mlx->player.y + y;
-		mlx->player.hit2_x = (int)mlx->player.x + 2;
-		mlx->player.hit2_y = (int)mlx->player.y + y;
-	}
+		ft_east(mlx);
 	else if (direction == 6)
-	{
-		mlx->player.hit1_x = (int)mlx->player.x + x;
-		mlx->player.hit1_y = (int)mlx->player.y + 1;
-		mlx->player.hit2_x = (int)mlx->player.x + x;
-		mlx->player.hit2_y = (int)mlx->player.y + 2;
-	}
+		ft_south(mlx);
 	else if (direction == 7)
-	{
-		mlx->player.hit1_x = (int)mlx->player.x;
-		mlx->player.hit1_y = (int)mlx->player.y + y;
-		mlx->player.hit2_x = (int)mlx->player.x - 1;
-		mlx->player.hit2_y = (int)mlx->player.y + y;
-	}
+		ft_west(mlx);
 	else if (direction == 8)
-	{
-		mlx->player.hit1_x = (int)mlx->player.x + x;
-		mlx->player.hit1_y = (int)mlx->player.y;
-		mlx->player.hit2_x = (int)mlx->player.x + x;
-		mlx->player.hit2_y = (int)mlx->player.y - 1;
-	}
-	printf("x = %f | y = %f\n", mlx->player.x, mlx->player.y);
-//	printf("rel_x = %f | rel_y = %f\n", x, y);
-	printf("hit1_x = %f | hit1_y = %f\n", mlx->player.hit1_x, mlx->player.hit1_y);
-	printf("hit2_x = %f | hit2_y = %f\n", mlx->player.hit2_x, mlx->player.hit2_y);
-	printf("angle = %d\n\n", mlx->player.angle);
-//	printf("d = %d | %c\n", direction, mlx->player.dir);
+		ft_north(mlx);
+	printf("hypo = %f\n", hypo);
+	printf("hit_x = %f\n", mlx->player.f_hit_x);
+	printf("hit_y = %f\n\n", mlx->player.f_hit_y);
 	return (hypo);
+}
+
+char	ft_check_hit(t_mlx *mlx, char hit, double x, double y)
+{
+	if (hit == 'e')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+	else if (hit == 's')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+	else if (hit == 'w')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)(x - 1)]);
+	else if (hit == 'n')
+		return (mlx->map.grid[(unsigned int)(y - 1)][(unsigned int)x]);
+	return ('1');
 }
