@@ -1,4 +1,4 @@
-#include "../cub3D.h"
+#include "../../cub3D.h"
 
 int	ft_get_len(float cos, float sin)
 {
