@@ -13,10 +13,10 @@ void	ft_init_ray(t_mlx *mlx)
 double	ft_move_angle(double angle, double move)
 {
 	angle = angle + move;
-	if (angle < 0)
+	if (angle <= 0)
 		angle = 360 + angle;
-	if (angle > 360)
-		angle = 360 - angle;
+	if (angle >= 360)
+		angle = angle - 360;
 	return (angle);
 }
 
@@ -63,7 +63,7 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 		ft_draw_col(buff, i, 0, (1000 - res) / 2, 0x0FFFFF);
 		ft_draw_col(buff, i, (1000 - res) / 2, res, 0x0000FF);
 		angle = ft_move_angle(angle, 0.06);
-		printf("res[%d] = %d | dist = %f\n", i, res, dist);
+//		printf("res[%d] = %d | dist = %f\n", i, res, dist);
 		i++;
 	}
 //	printf("d = %f | ", dist);
@@ -94,20 +94,6 @@ double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
 		hypo = ft_nw(mlx, x, y, angle);
 	else if (direction == 8)
 		hypo = ft_ne(mlx, x, y, angle);
-/*	else if (direction == 2)
-		hypo = ft_sw(mlx, x, y, angle);
-	else if (direction == 3)
-		hypo = ft_nw(mlx, x, y, angle);
-	else if (direction == 4)
-		hypo = ft_ne(mlx, x, y, angle);
-	else if (direction == 5)
-		hypo = ft_east(mlx);
-	else if (direction == 6)
-		hypo = ft_south(mlx);
-	else if (direction == 7)
-		hypo = ft_west(mlx);
-	else if (direction == 8)
-		hypo = ft_north(mlx);*/
 	return (hypo);
 }
 
