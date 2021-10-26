@@ -53,6 +53,7 @@ typedef struct	s_player
 typedef struct	s_map
 {
 	int	g_height;
+	int	g_width;
 	char	**grid;
 
 }		t_map;
@@ -120,8 +121,6 @@ void	ft_display_map(t_mlx *mlx);
 //...........................................................FILE INFOS (MAP)
 int     ft_get_direction(char direction);
 int     ft_get_position(t_mlx *mlx);
-//int	ft_get_text(t_mlx *mlx, char *file);
-//int	ft_get_map(t_mlx *mlx, char *file);
 int	ft_get_infos(t_mlx *mlx, char *file);
 //...........................................................PARSING
 int	ft_parse_text(t_mlx *mlx);

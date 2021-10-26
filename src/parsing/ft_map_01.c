@@ -29,8 +29,8 @@ int	ft_get_position(t_mlx *mlx)
 		{
 			if (mlx->map.grid[i][j] != '1' && mlx->map.grid[i][j] != '0' && mlx->map.grid[i][j] != ' ')
 			{
-				mlx->player.x = j/* * B_SIZE*/;
-				mlx->player.y = i/* * B_SIZE*/;
+				mlx->player.x = j;
+				mlx->player.y = i;
 				mlx->player.angle = ft_get_direction(mlx->map.grid[i][j]);
 				res++;
 			}

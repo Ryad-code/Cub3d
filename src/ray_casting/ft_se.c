@@ -15,9 +15,10 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 	seg_y = 1 - y;
 	angle_a = angle;
 	angle_b = (PI / 2) - angle_a;
+	printf("SE | ");
 	if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
 	{
-		while (mlx->player.hit1_y <= 10 && mlx->player.hit1_x <= 10
+		while (mlx->player.hit1_y <= mlx->map.g_height && mlx->player.hit1_x <= mlx->map.g_width
 		&& ft_check_hit(mlx, 'e' ,mlx->player.hit1_x, mlx->player.hit1_y) != '1')
 		{
 			hypo_1 = (seg_x + i) / cos(angle_a);
@@ -26,7 +27,7 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 			i++;
 		}
 		i = 0;
-		while (mlx->player.hit2_y <= 10 && mlx->player.hit2_x <= 10
+		while (mlx->player.hit2_y <= mlx->map.g_height && mlx->player.hit2_x <= mlx->map.g_width
 		&& ft_check_hit(mlx, 's' ,mlx->player.hit2_x, mlx->player.hit2_y) != '1')
 		{
 			hypo_2 = (seg_y + i) / cos(angle_b);
@@ -38,7 +39,7 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 	}
 	else if (seg_y / cos(angle_b) <= seg_x / cos(angle_a))
 	{
-		while (mlx->player.hit1_y <= 10 && mlx->player.hit1_x <= 10
+		while (mlx->player.hit1_y <= mlx->map.g_height && mlx->player.hit1_x <= mlx->map.g_width
 		&& ft_check_hit(mlx, 's' ,mlx->player.hit1_x, mlx->player.hit1_y) != '1')
 		{
 			hypo_1 = (seg_y + i) / cos(angle_b);
@@ -47,7 +48,7 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 			i++;
 		}
 		i = 0;
-		while (mlx->player.hit2_y <= 10 && mlx->player.hit2_x <= 10
+		while (mlx->player.hit2_y <= mlx->map.g_height && mlx->player.hit2_x <= mlx->map.g_width
 		&& ft_check_hit(mlx, 'e' ,mlx->player.hit2_x, mlx->player.hit2_y) != '1')
 		{
 			hypo_2 = (seg_x + i) / cos(angle_a);

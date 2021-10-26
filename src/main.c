@@ -4,16 +4,15 @@ int main(int ac, char **av)
 {
 	t_mlx	mlx;
 
-//	(void)ac;
-//	(void)av;
 	mlx.frame = 1;
 
 	ft_args(ac, av);		//CHECKING ARGS
 	ft_get_infos(&mlx, av[1]);	//GETTING INFOS (POS, MAP, TEXTURES)
 	ft_parse_text(&mlx);		//INFOS PARSING
 
-	printf("x = %f\n", mlx.player.x);
-	printf("y = %f\n", mlx.player.y);
+	ft_display_map(&mlx);
+	printf("height = %d\n", mlx.map.g_height);
+	printf("width = %d\n", mlx.map.g_width);
 	mlx.mlx = mlx_init();//..............INIT WINDOW
 	mlx.win = mlx_new_window(mlx.mlx, S_WIDTH, S_HEIGHT, "cub3D");
 

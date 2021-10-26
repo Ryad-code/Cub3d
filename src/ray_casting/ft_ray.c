@@ -1,5 +1,25 @@
 #include "../../cub3D.h"
 
+void	ft_init_ray(t_mlx *mlx)
+{
+	mlx->player.hit1_x = mlx->player.x;
+	mlx->player.hit1_y = mlx->player.y;
+	mlx->player.hit2_x = mlx->player.x;
+	mlx->player.hit2_y = mlx->player.y;
+	mlx->player.f_hit_x = mlx->player.x;
+	mlx->player.f_hit_y = mlx->player.y;
+}
+
+int	ft_move_angle(int angle, int move)
+{
+	angle = angle + move;
+	if (angle < 0)
+		angle = 360 + angle;
+	if (angle > 360)
+		angle = 360 - angle;
+	return (angle);
+}
+
 int	ft_angle(int angle)
 {
 	if (angle > 0 && angle < 90)
@@ -23,15 +43,27 @@ int	ft_angle(int angle)
 
 void	ft_vector(t_mlx *mlx, t_img *buff)
 {
-	double tmp;
+	int	i;
+	int	angle;
+	double	tmp;
 
-	tmp = (PI / 180) * mlx->player.angle;
-//.................................................................
+	i = 0;
+	angle = ft_move_angle(mlx->player.angle, -30);
+	printf("a = %d |",  angle);
+	printf("pos = [%f][%f]\n", mlx->player.x, mlx->player.y);
 	my_pixel_put(buff, mlx->player.x * B_SIZE, mlx->player.y * B_SIZE, 0x0FF00FF);
-//.................................................................
-	ft_ray_caster(mlx, mlx->player.x - (int)mlx->player.x, mlx->player.y - (int)mlx->player.y, tmp);
-	ft_raycast(mlx, buff, tmp);
-	my_pixel_put(buff, mlx->player.f_hit_x * B_SIZE, mlx->player.f_hit_y * B_SIZE, 0xFFFFFF);
+	while (i < 60)
+	{	
+		tmp = (PI / 180) * angle;
+		ft_raycast(mlx, buff, tmp);
+		ft_ray_caster(mlx, mlx->player.x - (int)mlx->player.x, mlx->player.y - (int)mlx->player.y, tmp);
+		my_pixel_put(buff, mlx->player.f_hit_x * B_SIZE, mlx->player.f_hit_y * B_SIZE, 0xFFFFFF);
+		angle = ft_move_angle(angle, 1);
+		//....................................
+		printf("hit = [%f][ %f]\n", mlx->player.f_hit_x, mlx->player.f_hit_y);
+		i++;
+	}
+	printf("\n");
 }
 
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
@@ -39,11 +71,8 @@ double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
 	int	direction;
 	double	hypo;
 
-	direction = ft_angle(mlx->player.angle);
-	mlx->player.hit1_x = mlx->player.x;
-	mlx->player.hit1_y = mlx->player.y;
-	mlx->player.hit2_x = mlx->player.x;
-	mlx->player.hit2_y = mlx->player.y;
+	direction = ft_angle(angle / (PI / 180));
+	ft_init_ray(mlx);
 	if (direction == 1)
 		hypo = ft_se(mlx, x, y, angle);
 	else if (direction == 2)
@@ -60,9 +89,10 @@ double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
 		ft_west(mlx);
 	else if (direction == 8)
 		ft_north(mlx);
-	printf("hypo = %f\n", hypo);
-	printf("hit_x = %f\n", mlx->player.f_hit_x);
-	printf("hit_y = %f\n\n", mlx->player.f_hit_y);
+//	printf("angle = %d\n", mlx->player.angle);
+//	printf("hypo = %f\n", hypo);
+//	printf("px = %f | py = %f\n", mlx->player.x, mlx->player.y);
+//	printf("hit_x = %f | hit_y = %f\n\n", mlx->player.f_hit_x, mlx->player.f_hit_y);
 	return (hypo);
 }
 
