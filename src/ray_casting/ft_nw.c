@@ -15,7 +15,6 @@ double	ft_nw(t_mlx *mlx, double x, double y, double angle)
 	seg_y = y;
 	angle_a = angle - PI;
 	angle_b = (PI / 2) - angle_a;
-	printf("NW | ");
 	if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
 	{
 		hypo_1 = seg_x / cos(angle_a);

@@ -98,13 +98,13 @@ void	ft_draw_grid(t_mlx *mlx, t_img *buff);
 void	ft_vision(t_mlx *mlx, t_img *buff);
 void    ft_raycast(t_mlx *mlx, t_img *buff, float angle);
 void	ft_vector(t_mlx *mlx, t_img *buff);
-int	ft_angle(int angle);
+int	ft_angle(double angle);
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle);
 //...........................................................DIRECTION
-void    ft_east(t_mlx *mlx);
-void    ft_west(t_mlx *mlx);
-void    ft_south(t_mlx *mlx);
-void    ft_north(t_mlx *mlx);
+double	ft_east(t_mlx *mlx);
+double	ft_west(t_mlx *mlx);
+double	ft_south(t_mlx *mlx);
+double	ft_north(t_mlx *mlx);
 double  ft_se(t_mlx *mlx, double x, double y, double angle);
 double  ft_sw(t_mlx *mlx, double x, double y, double angle);
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);

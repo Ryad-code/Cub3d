@@ -9,9 +9,8 @@ int	ft_next_frame(int keycode, t_mlx *mlx)
 				&mlx->buff02.l_len, &mlx->buff02.endian);
 		
 		ft_keycode(keycode, mlx);
-		ft_draw_map(mlx, &mlx->buff02);
+//		ft_draw_map(mlx, &mlx->buff02);
 		ft_vector(mlx, &mlx->buff02);
-//		ft_vision(mlx, &mlx->buff02);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->buff02.img, 0, 0);
 		mlx_destroy_image(mlx->mlx, mlx->buff01.img);
 	}
@@ -22,9 +21,8 @@ int	ft_next_frame(int keycode, t_mlx *mlx)
 				&mlx->buff01.l_len, &mlx->buff01.endian);
 		
 		ft_keycode(keycode, mlx);
-		ft_draw_map(mlx, &mlx->buff01);
+//		ft_draw_map(mlx, &mlx->buff01);
 		ft_vector(mlx, &mlx->buff01);
-//		ft_vision(mlx, &mlx->buff01);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->buff01.img, 0, 0);
 		mlx_destroy_image(mlx->mlx, mlx->buff02.img);
 

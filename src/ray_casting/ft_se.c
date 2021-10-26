@@ -15,7 +15,6 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 	seg_y = 1 - y;
 	angle_a = angle;
 	angle_b = (PI / 2) - angle_a;
-	printf("SE | ");
 	if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
 	{
 		while (mlx->player.hit1_y <= mlx->map.g_height && mlx->player.hit1_x <= mlx->map.g_width

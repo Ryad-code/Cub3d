@@ -15,7 +15,6 @@ double	ft_sw(t_mlx *mlx, double x, double y, double angle)
 	seg_y = 1 - y;
 	angle_a = angle - (PI / 2);
 	angle_b = (PI / 2) - angle_a;
-	printf("SW | ");
 	if (seg_x / cos(angle_b) <= seg_y / cos(angle_a))
 	{
 		hypo_1 = seg_x / cos(angle_b);
