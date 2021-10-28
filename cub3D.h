@@ -16,6 +16,15 @@
 #define B_SIZE 100
 
 
+typedef struct	s_ray
+{
+	double	dist;
+	int	wall_height;
+	double	hit_x;
+	double	hit_y;
+	char	dir;
+}		t_ray;
+
 typedef struct s_img
 {
 	void	*img;
@@ -38,8 +47,8 @@ typedef struct	s_text
 
 typedef struct	s_player
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 	double	hit1_x;
 	double	hit1_y;
 	double	hit2_x;
@@ -74,11 +83,12 @@ typedef struct	s_mlx
 	void		*win;
 	t_img		buff01;
 	t_img		buff02;
-	t_text		text;
+	t_text		text_e;
 	t_text          text_w;
 	t_text          text_n;
 	t_text          text_s;
 	t_player	player;
+	t_ray		ray;
 	t_map		map;
 	t_arg		arg;
 	int		frame;
@@ -114,9 +124,11 @@ double  ft_nw(t_mlx *mlx, double x, double y, double angle);
 double	ft_ne(t_mlx *mlx, double x, double y, double angle);
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 //...........................................................TEXTURES
-double	ft_texture(t_mlx *mlx, char dir);
-unsigned int    ft_get_pixel(t_text *text, int w_pix, int w_size, double hit);
-void    ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y, int w_size, double hit, t_text *text);
+int		ft_init_texture(t_mlx *mlx);
+double		ft_hit(t_mlx *mlx);
+unsigned int    ft_get_pixel(t_mlx *mlx, t_text *text, int w_pix, int w_size);
+void		ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y, int w_size);
+t_text		*ft_choose_text(t_mlx *mlx);
 //...........................................................FRAME
 int	ft_next_frame(int keycode, t_mlx *mlx);
 //...........................................................KEYCODE

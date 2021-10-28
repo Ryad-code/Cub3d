@@ -1,7 +1,7 @@
-  NO  ./path_no
-SO ./path_so
-WE ./path_we
-EA ./path_ea
+  NO  ./textures/concrete2_seamless_diffuse_1k.xpm
+SO ./textures/greenbubblescalesheight.xpm
+WE ./textures/chocolatewaferstraw.xpm
+EA ./textures/bricksheight.xpm
 
 F 200,100,0
 C 100,100,20
