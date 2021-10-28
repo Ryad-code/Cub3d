@@ -92,17 +92,24 @@ int	ft_is_line(char *str)
 void	ft_get_g_height(t_mlx *mlx, char *file)
 {
 	int	fd;
-	int	i;
+	int	height;
+	int	width;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
-	i = 0;
+	height = 0;
+	width = 0;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_is_line(line) == 0)
-			i++;
+		{
+			if (ft_strlen(line) > width)
+				width = ft_strlen(line);
+			height++;
+		}
 	}
-	mlx->map.g_height = i;
+	mlx->map.g_width = width;
+	mlx->map.g_height = height;
 	close(fd);
 }
 

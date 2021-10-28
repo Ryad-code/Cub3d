@@ -132,6 +132,9 @@ double  *ft_nw_x(t_mlx *mlx, double x, double y, double angle);
 double  *ft_nw_y(t_mlx *mlx, double x, double y, double angle);
 //..........................................................NE
 double	ft_ne(t_mlx *mlx, double x, double y, double angle);
+double  *ft_ne_x(t_mlx *mlx, double x, double y, double angle);
+double  *ft_ne_y(t_mlx *mlx, double x, double y, double angle);
+//..........................................................CHECK HIT
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 //...........................................................TEXTURES
 int		ft_init_texture(t_mlx *mlx);
@@ -151,8 +154,12 @@ void	ft_display_map(t_mlx *mlx);
 int     ft_get_direction(char direction);
 int     ft_get_position(t_mlx *mlx);
 int	ft_get_infos(t_mlx *mlx, char *file);
-//...........................................................PARSING
+//...........................................................PARSING TEXT
 int	ft_parse_text(t_mlx *mlx);
 int	ft_space(char *str);
 int	ft_check_text(char *str, char *text);
 char	*ft_text(char *str);
+//...........................................................PARSING MAP
+char    *ft_fill_line(t_mlx *mlx, char *str);
+void	ft_replace_spaces(char *str);
+void    ft_fill_grid(t_mlx *mlx);

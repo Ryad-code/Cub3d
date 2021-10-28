@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/10/28 02:28:48 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/10/28 16:57:50 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS		=	src/main.c			\
 			src/ft_frame.c			\
 			src/parsing/ft_map_01.c 	\
 			src/parsing/ft_map_02.c 	\
-			src/parsing/ft_parsing.c 	\
+			src/parsing/ft_text_parsing.c 	\
+			src/parsing/ft_map_parsing.c	\
 			src/ray_casting/ft_ray.c 	\
 			src/ray_casting/ft_ray_01.c	\
 			src/ray_casting/ft_direction.c	\
@@ -34,7 +35,7 @@ DIR_MLX		=	./mlx_linux/
 OBJS		= $(SRCS:.c=.o)
 
 CC				= gcc
-CFLAGS			= -g -Wall -Wextra -Werror -g3 -fsanitize=address -I includes.
+CFLAGS			= -g -Wall -Wextra -Werror -I includes.
 LIBS			= -L ./mlx_linux/ -lmlx -lXext -lX11 -lm
 RM				= rm -f
 NAME			= cub3D

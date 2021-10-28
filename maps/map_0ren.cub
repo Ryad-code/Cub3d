@@ -1,7 +1,7 @@
-  NO  ./path_no
-SO ./path_so
-WE ./path_we
-EA ./path_ea
+  NO  ./textures/bricksheight.xpm
+SO ./textures/bricksheight.xpm
+WE ./textures/bricksheight.xpm
+EA ./textures/bricksheight.xpm
 
 F 200,100,0
 C 100,100,20
