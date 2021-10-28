@@ -118,9 +118,19 @@ double	ft_east(t_mlx *mlx);
 double	ft_west(t_mlx *mlx);
 double	ft_south(t_mlx *mlx);
 double	ft_north(t_mlx *mlx);
+//..........................................................SE
 double  ft_se(t_mlx *mlx, double x, double y, double angle);
+double	*ft_se_x(t_mlx *mlx, double x, double y, double angle);
+double  *ft_se_y(t_mlx *mlx, double x, double y, double angle);
+//..........................................................SW
 double  ft_sw(t_mlx *mlx, double x, double y, double angle);
+double  *ft_sw_x(t_mlx *mlx, double x, double y, double angle);
+double  *ft_sw_y(t_mlx *mlx, double x, double y, double angle);
+//..........................................................NW
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);
+double  *ft_nw_x(t_mlx *mlx, double x, double y, double angle);
+double  *ft_nw_y(t_mlx *mlx, double x, double y, double angle);
+//..........................................................NE
 double	ft_ne(t_mlx *mlx, double x, double y, double angle);
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 //...........................................................TEXTURES
