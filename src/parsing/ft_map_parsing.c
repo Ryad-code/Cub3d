@@ -24,6 +24,20 @@ char	*ft_fill_line(t_mlx *mlx, char *str)
 	return (res);
 }
 
+void    ft_replace_spaces(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			str[i] = '1';
+		i++;
+	}
+
+}
+
 void	ft_fill_grid(t_mlx *mlx)
 {
 	int	i;
@@ -37,15 +51,23 @@ void	ft_fill_grid(t_mlx *mlx)
 	}
 }
 
-void	ft_replace_spaces(char *str)
+int	ft_check_map_sides(t_mlx *mlx)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < mlx->map.g_height)
 	{
-		if (str[i] == ' ')
-			str[i] = '1';
+		if (mlx->map.grid[i][0] == '0' || mlx->map.grid[i][mlx->map.g_width - 1] == '0')
+			return (-1);
 		i++;
 	}
+	i = 0;
+	while (i < mlx->map.g_width)
+	{
+		if (mlx->map.grid[0][i] == '0' || mlx->map.grid[mlx->map.g_height - 1][i] == '0')
+			return (-1);
+		i++;
+	}
+	return (0);
 }

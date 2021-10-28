@@ -163,3 +163,4 @@ char	*ft_text(char *str);
 char    *ft_fill_line(t_mlx *mlx, char *str);
 void	ft_replace_spaces(char *str);
 void    ft_fill_grid(t_mlx *mlx);
+int	ft_check_map_sides(t_mlx *mlx);

@@ -32,7 +32,7 @@ int main(int ac, char **av)
 		printf("Wrong texture paths\n");
 		return (-1);
 	}
-	/*	mlx.win = mlx_new_window(mlx.mlx, S_WIDTH, S_HEIGHT, "cub3D");
+		mlx.win = mlx_new_window(mlx.mlx, S_WIDTH, S_HEIGHT, "cub3D");
 
 	mlx.buff01.img = mlx_new_image(mlx.mlx, S_WIDTH, S_HEIGHT);
 	mlx.buff01.addr = mlx_get_data_addr(mlx.buff01.img, &mlx.buff01.bpp,
@@ -47,6 +47,6 @@ int main(int ac, char **av)
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.buff01.img, 0, 0);
 	
 	mlx_hook(mlx.win, 2, 1L<<0, ft_next_frame, &mlx);//....................KEY_HOOK
-	mlx_loop(mlx.mlx);*/
+	mlx_loop(mlx.mlx);
 	return (0);
 }
