@@ -4,7 +4,7 @@ void	my_pixel_put(t_img *img, int x, int y, int color)
 {
 	char *dst;
 
-	if ((x >= 0 && x <= 1000) && (y >= 0 && y <= 1000))
+	if ((x >= 0 && x <= S_WIDTH) && (y >= 0 && y <= S_HEIGHT))
 	{
 		dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
 		*(unsigned int*)dst = color;
@@ -78,21 +78,23 @@ void    ft_draw_lin(t_img *buff, int x, int y, int len, int color)
 		i++;
 	}
 }
-
+/*
 unsigned int	ft_get_pixel(t_mlx *mlx, int x, int y)
 {
 	return (*(unsigned int*)(mlx->text.addr + (y * mlx->text.l_len + x * (mlx->text.bpp / 8))));
 }
-
+*/
 void	ft_draw_text(t_mlx *mlx, t_img *buff, int x, int y, int len)
 {
 	int		i;
 	unsigned int	color;
 
 	i = 0;
+	color = 0;
+	(void)mlx;
 	while (i < len)
 	{
-		color = ft_get_pixel(mlx, x, y);
+//		color = ft_get_pixel(mlx, x, y);
 		my_pixel_put(buff, x, y + i, color);
 		i++;
 	}

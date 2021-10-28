@@ -31,8 +31,8 @@ typedef struct	s_text
 	char	*addr;
 	int	img_width;
 	int	img_height;
-	int	bpp;
-	int	l_len;
+	int	bit_per_pixel;
+	int	line_lenght;
 	int	endian;
 }		t_text;
 
@@ -75,6 +75,9 @@ typedef struct	s_mlx
 	t_img		buff01;
 	t_img		buff02;
 	t_text		text;
+	t_text          text_w;
+	t_text          text_n;
+	t_text          text_s;
 	t_player	player;
 	t_map		map;
 	t_arg		arg;
@@ -110,6 +113,10 @@ double  ft_sw(t_mlx *mlx, double x, double y, double angle);
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);
 double	ft_ne(t_mlx *mlx, double x, double y, double angle);
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
+//...........................................................TEXTURES
+double	ft_texture(t_mlx *mlx, char dir);
+unsigned int    ft_get_pixel(t_text *text, int w_pix, int w_size, double hit);
+void    ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y, int w_size, double hit, t_text *text);
 //...........................................................FRAME
 int	ft_next_frame(int keycode, t_mlx *mlx);
 //...........................................................KEYCODE

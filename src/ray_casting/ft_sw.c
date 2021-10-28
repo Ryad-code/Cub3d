@@ -71,12 +71,20 @@ double	ft_sw(t_mlx *mlx, double x, double y, double angle)
 	{
 		mlx->player.f_hit_x = mlx->player.hit1_x;
 		mlx->player.f_hit_y = mlx->player.hit1_y;
+		if (seg_x / cos(angle_b) <= seg_y / cos(angle_a))
+			mlx->player.dir = 'w';
+		else
+			mlx->player.dir = 's';
 		return (hypo_1);
 	}
 	else
 	{
 		mlx->player.f_hit_x = mlx->player.hit2_x;
 		mlx->player.f_hit_y = mlx->player.hit2_y;
+		if (seg_x / cos(angle_b) <= seg_y / cos(angle_a))
+			mlx->player.dir = 's';
+		else
+			mlx->player.dir = 'w';
 		return (hypo_2);
 	}
 	return (0);

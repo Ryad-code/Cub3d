@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/10/25 05:01:24 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/10/28 02:28:48 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		=	src/main.c			\
 			src/ray_casting/ft_sw.c		\
 			src/ray_casting/ft_nw.c		\
 			src/ray_casting/ft_ne.c		\
+			src/ray_casting/ft_texture.c	\
 			gnl/get_next_line.c		\
 			gnl/get_next_line_utils.c	\
 			

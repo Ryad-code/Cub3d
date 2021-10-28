@@ -48,27 +48,24 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 	double	tmp;
 	double dist;
 	int	res;
+	double hit;
 
 	i = 0;
-	angle = ft_move_angle(mlx->player.angle, -30);
-	while (i < 1000)
+	angle = ft_move_angle(mlx->player.angle, - 30);
+	while (i < S_WIDTH)
 	{
 		tmp = (PI / 180) * angle;
 		dist = ft_ray_caster(mlx, mlx->player.x - (int)mlx->player.x, mlx->player.y - (int)mlx->player.y, tmp);
-		res = (int)nearbyint((1 / dist) * 1000);
-		tmp = (PI / 180) * (mlx->player.angle - angle);
-		res = (int)nearbyint(res * (1 / cos(tmp)));
-		if (res > 1000)
-			res = 1000;
-		ft_draw_col(buff, i, 0, (1000 - res) / 2, 0x0FFFFF);
-		ft_draw_col(buff, i, (1000 - res) / 2, res, 0x0000FF);
+		res = (int)nearbyint((1 / dist) * S_HEIGHT);
+		res = (int)nearbyint(res * (1 / cos((PI / 180) * (mlx->player.angle - angle))));
+		if (res > S_HEIGHT)
+			res = S_HEIGHT;
+		hit = ft_texture(mlx, mlx->player.dir);
+		ft_draw_col(buff, i, 0, (S_HEIGHT - res) / 2, 0x0FFFFF);
+		ft_draw_t_col(mlx, buff, i, (S_HEIGHT - res) / 2, res, hit, &mlx->text);
 		angle = ft_move_angle(angle, 0.06);
-//		printf("res[%d] = %d | dist = %f\n", i, res, dist);
 		i++;
 	}
-//	printf("d = %f | ", dist);
-//	printf("pos = [%f][%f]\n", mlx->player.x, mlx->player.y);
-//	printf("angle = %d\n\n", mlx->player.angle);
 }
 
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)

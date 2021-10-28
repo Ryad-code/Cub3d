@@ -60,12 +60,20 @@ double	ft_se(t_mlx *mlx, double x, double y, double angle)
 	{
 		mlx->player.f_hit_x = mlx->player.hit1_x;
 		mlx->player.f_hit_y = mlx->player.hit1_y;
+		if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
+			mlx->player.dir = 'e';
+		else
+			mlx->player.dir = 's';
 		return (hypo_1);
 	}
 	else
 	{
 		mlx->player.f_hit_x = mlx->player.hit2_x;
 		mlx->player.f_hit_y = mlx->player.hit2_y;
+		if (seg_x / cos(angle_a) <= seg_y / cos(angle_b))
+			mlx->player.dir = 's';
+		else
+			mlx->player.dir = 'e';
 		return (hypo_2);
 	}
 	return (0);
