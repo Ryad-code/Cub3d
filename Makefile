@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/10/28 18:29:18 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/10/29 15:53:54 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ DIR_MLX		=	./mlx_linux/
 OBJS		= $(SRCS:.c=.o)
 
 CC				= gcc
-CFLAGS			= -g -Wall -Wextra -Werror -g3 -fsanitize=address -I includes.
+CFLAGS			= -g -Wall -Wextra -Werror -I includes.
 LIBS			= -L ./mlx_linux/ -lmlx -lXext -lX11 -lm
 RM				= rm -f
 NAME			= cub3D

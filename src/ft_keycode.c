@@ -10,7 +10,6 @@ void	ft_keycode(int keycode, t_mlx *mlx)
 	}
 	ft_turn(keycode, mlx);
 	ft_move(keycode, mlx);
-//	printf("%d\n", keycode);
 }
 
 void	ft_turn(int keycode, t_mlx *mlx)
@@ -42,8 +41,6 @@ void	ft_move(int keycode, t_mlx *mlx)
 		if (mlx->map.grid[(int)(mlx->player.y + (sin(tmp) / 50))]
 			[(int)(mlx->player.x + (cos(tmp) / 50))] != '1')
 		{
-//		mlx->player.y = (mlx->player.y + (sin(tmp) * 2));
-//		mlx->player.x = (mlx->player.x + (cos(tmp) * 2));
 			mlx->player.x = (mlx->player.x + (cos(tmp) / 50));
 			mlx->player.y = (mlx->player.y + (sin(tmp) / 50));
 		}

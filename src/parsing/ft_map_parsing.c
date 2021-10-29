@@ -33,6 +33,8 @@ void    ft_replace_spaces(char *str)
 	{
 		if (str[i] == ' ')
 			str[i] = '1';
+		else if (str[i] == 'N' || str[i] == 'E' || str[i] == 'W' || str[i] == 'S')
+			str[i] = '0';
 		i++;
 	}
 
@@ -70,4 +72,43 @@ int	ft_check_map_sides(t_mlx *mlx)
 		i++;
 	}
 	return (0);
+}
+
+int	ft_check_inside_grid(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 1;
+	while (j < mlx->map.g_height - 1)
+	{
+		while (i < mlx->map.g_width - 1)
+		{
+			if (mlx->map.grid[j - 1][i] != '1' && mlx->map.grid[j - 1][i] != '0')
+				return (-1);
+			if (mlx->map.grid[j + 1][i] != '1' && mlx->map.grid[j + 1][i] != '0')
+				return (-1);
+			if (mlx->map.grid[j][i - 1] != '1' && mlx->map.grid[j][i - 1] != '0')
+				return (-1);
+			if (mlx->map.grid[j][i + 1] != '1' && mlx->map.grid[j][i + 1] != '0')
+				return (-1);
+
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
+
+int	ft_parse_map(t_mlx *mlx)
+{
+	int	out;
+	int	in;
+
+	ft_fill_grid(mlx);
+	out = ft_check_map_sides(mlx);
+	in = ft_check_inside_grid(mlx);
+	if (in < 0 || out < 0)
+		return (-1);
 }

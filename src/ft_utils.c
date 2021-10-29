@@ -22,24 +22,6 @@ char	*ft_strndup(char *str, int n)
 	dest[i] = '\0';
 	return (dest);
 }
-/*
-char	*ft_strdup(char *str)
-{
-	int i;
-	char *res;
-
-	i = 0;
-	res = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if (res == NULL)
-		return (NULL);
-	while (str[i])
-	{
-		res[i] = str[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}*/
 
 int	ft_check_file(char *file)
 {
