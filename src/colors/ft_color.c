@@ -145,7 +145,7 @@ char	*ft_get_colors(char *str)
 	int	j;
 	char	*res;
 
-	i = 0;
+	i = ft_space(str);;
 	j = 0;
 	res = malloc(sizeof(char) * 12);
 	if (res == NULL)
@@ -157,6 +157,8 @@ char	*ft_get_colors(char *str)
 			res[j] = str[i];
 			j++;
 		}
+		else if (str[i] != 'F' && str[i] != 'C' && str[i] != ',' && str[i] != ' ' && ft_is_num(str[i]) != 0)
+			return (NULL);
 		i++;
 	}
 	res[j] = '\0';
@@ -209,6 +211,8 @@ int	ft_parse_colors(t_mlx *mlx)
 		return (-1);
 	mlx->arg.c.str = ft_get_colors(mlx->arg.c.str);
 	mlx->arg.f.str = ft_get_colors(mlx->arg.f.str);
+	printf("%s\n", mlx->arg.c.str);
+	printf("%s\n", mlx->arg.f.str);
 	if (ft_check_color_str(mlx->arg.c.str) < 0)
 		return (-1);
 	if (ft_check_color_str(mlx->arg.f.str) < 0)
