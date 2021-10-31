@@ -1,8 +1,29 @@
 #include "../../cub3D.h"
 
+int	ft_strstr(char *str1, char *str2)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str1[i])
+	{
+		if (str1[i] == str2[0])
+		{
+			while (str1[i + j] ==  str2[j])
+				j++;
+		}
+		if (j >= ft_strlen(str2))
+			return (0);
+		i++;
+	}
+	return (-1);
+}
+
 int	ft_is_opt(char *opt, char *line)
 {
-	if (strstr(line, opt) != NULL)
+	if (ft_strstr(line, opt) == 0)
 		return (0);
 	return (-1);
 }
@@ -41,12 +62,12 @@ int	ft_get_text(t_mlx *mlx, char *file)
 		}
 		else if (ft_is_opt("F ", line) == 0)
 		{
-			mlx->arg.f = ft_strdup(line);
+			mlx->arg.f.str = ft_strdup(line);
 			res++;
 		}
 		else if (ft_is_opt("C ", line) == 0)
 		{
-			mlx->arg.c = ft_strdup(line);
+			mlx->arg.c.str = ft_strdup(line);
 			res++;
 		}
 		if (res < 6)

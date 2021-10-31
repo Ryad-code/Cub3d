@@ -23,6 +23,52 @@ char	*ft_strndup(char *str, int n)
 	return (dest);
 }
 
+char	*ft_strndup_1(char *str, int n)
+{
+	int 	i;
+	char	*dest;
+
+	i = 0;
+	dest = malloc(sizeof(char) * (n + 1));
+	if (dest == NULL)
+		return (NULL);
+	while (str[i] && i < n)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+int	ft_atoi(const char *str)
+{
+	int		i;
+	long	sign;
+	long	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
+	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	nb = nb * sign;
+	return (nb);
+}
+
 int	ft_check_file(char *file)
 {
 	int len;

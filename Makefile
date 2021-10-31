@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/10/29 15:53:54 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/10/31 10:15:11 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=	src/main.c			\
 			src/parsing/ft_map_02.c 	\
 			src/parsing/ft_text_parsing.c 	\
 			src/parsing/ft_map_parsing.c	\
+			src/colors/ft_color.c		\
 			src/ray_casting/ft_ray.c 	\
 			src/ray_casting/ft_ray_01.c	\
 			src/ray_casting/ft_direction.c	\

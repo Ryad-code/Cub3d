@@ -111,4 +111,5 @@ int	ft_parse_map(t_mlx *mlx)
 	in = ft_check_inside_grid(mlx);
 	if (in < 0 || out < 0)
 		return (-1);
+	return (0);
 }

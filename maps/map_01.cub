@@ -3,8 +3,8 @@ SO ./textures/greenbubblescalesheight.xpm
 WE ./textures/chocolatewaferstraw.xpm
 EA ./textures/bricksheight.xpm
 
-F 200,100,0
-C 100,100,20
+F 200   ,100,0
+C 100,100  ,   20
 
   1111111111
 1000000001

@@ -6,6 +6,7 @@ int main(int ac, char **av)
 
 	mlx.frame = 1;
 
+
 	if (ft_args(ac, av) < 0)
 	{
 		printf("Error\n");
@@ -26,7 +27,11 @@ int main(int ac, char **av)
 		printf("Error\n");
 		return (-1);
 	}
-
+	if (ft_parse_colors(&mlx) < 0)
+	{
+		printf("Error\n");
+		return(-1);
+	}
 	ft_display_map(&mlx);
 	mlx.mlx = mlx_init();//..............INIT WINDOW
 	if (ft_init_texture(&mlx) < 0)

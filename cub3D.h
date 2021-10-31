@@ -16,6 +16,15 @@
 #define B_SIZE 100
 
 
+typedef struct	s_color
+{
+	char	*str;
+	char	*col1;
+	char	*col2;
+	char	*col3;
+	int	color;
+}		t_color;
+
 typedef struct	s_ray
 {
 	double	dist;
@@ -73,8 +82,8 @@ typedef struct	s_arg
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*f;
-	char	*c;
+	t_color	f;
+	t_color	c;
 }		t_arg;
 
 typedef struct	s_mlx
@@ -96,6 +105,7 @@ typedef struct	s_mlx
 //.........................................................UTILS
 char	*ft_strdup(char *str);
 char	*ft_strndup(char *str, int n);
+char    *ft_strndup_1(char *str, int n);
 int	ft_check_file(char *file);
 int	ft_args(int ac , char **av);
 //.........................................................DRAW
@@ -166,3 +176,8 @@ void    ft_fill_grid(t_mlx *mlx);
 int	ft_check_map_sides(t_mlx *mlx);
 int     ft_check_inside_grid(t_mlx *mlx);
 int	ft_parse_map(t_mlx *mlx);
+//............................................................COLORS
+int     ft_is_num(char c);
+char    *ft_get_colors(char *str);
+int	ft_check_color(t_color *color);
+int	ft_parse_colors(t_mlx *mlx);
