@@ -32,7 +32,7 @@ int main(int ac, char **av)
 		printf("Error\n");
 		return(-1);
 	}
-	ft_display_map(&mlx);
+//	ft_display_map(&mlx);
 	mlx.mlx = mlx_init();//..............INIT WINDOW
 	if (ft_init_texture(&mlx) < 0)
 	{
@@ -55,5 +55,7 @@ int main(int ac, char **av)
 	
 	mlx_hook(mlx.win, 2, 1L<<0, ft_next_frame, &mlx);//....................KEY_HOOK
 	mlx_loop(mlx.mlx);
+	free(mlx.arg.c.str);
+	free(mlx.arg.f.str);
 	return (0);
 }

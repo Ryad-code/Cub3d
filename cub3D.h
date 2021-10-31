@@ -22,7 +22,7 @@ typedef struct	s_color
 	char	*col1;
 	char	*col2;
 	char	*col3;
-	int	color;
+	long	color;
 }		t_color;
 
 typedef struct	s_ray
@@ -106,6 +106,7 @@ typedef struct	s_mlx
 char	*ft_strdup(char *str);
 char	*ft_strndup(char *str, int n);
 char    *ft_strndup_1(char *str, int n);
+int	ft_atoi(const char *str);
 int	ft_check_file(char *file);
 int	ft_args(int ac , char **av);
 //.........................................................DRAW
@@ -181,3 +182,6 @@ int     ft_is_num(char c);
 char    *ft_get_colors(char *str);
 int	ft_check_color(t_color *color);
 int	ft_parse_colors(t_mlx *mlx);
+char    *ft_int_to_hex(unsigned long nb);
+long    ft_hexa_to_int(char *str);
+int	ft_convert_rgb(t_color *color);

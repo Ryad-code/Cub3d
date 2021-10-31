@@ -59,7 +59,8 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 		wall_height = mlx->ray.wall_height;
 		if (mlx->ray.wall_height > S_HEIGHT)
 			wall_height = S_HEIGHT;
-		ft_draw_col(buff, i, 0, (S_HEIGHT - mlx->ray.wall_height) / 2, 0x0FFFFF);
+		ft_draw_col(buff, i, 0, (S_HEIGHT - mlx->ray.wall_height) / 2, mlx->arg.f.color);
+		ft_draw_col(buff, i, S_HEIGHT / 2, S_HEIGHT / 2, mlx->arg.c.color);
 		ft_draw_t_col(mlx, buff, i, (S_HEIGHT - wall_height) / 2, wall_height);
 		angle = ft_move_angle(angle, 0.06);
 		i++;
