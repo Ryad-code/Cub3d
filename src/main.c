@@ -9,35 +9,37 @@ int main(int ac, char **av)
 
 	if (ft_args(ac, av) < 0)
 	{
-		printf("Error\n");
+		printf("Error1\n");
 		return (-1);
 	}
 	if (ft_get_infos(&mlx, av[1]) < 0)
 	{
-		printf("Error\n");
-		return (-1);
+		printf("Error2\n");
+		return (-2);
 	}
+	ft_display_map(&mlx);
+	printf("\n");
 	if (ft_parse_text(&mlx) < 0)
 	{
-		printf("Error\n");
-		return (-1);
+		printf("Error3\n");
+		return (-3);
 	}
 	if (ft_parse_map(&mlx) < 0)
 	{
-		printf("Error\n");
-		return (-1);
+		printf("Error4\n");
+		return (-4);
 	}
 	if (ft_parse_colors(&mlx) < 0)
 	{
-		printf("Error\n");
-		return(-1);
+		printf("Error5\n");
+		return(-5);
 	}
-//	ft_display_map(&mlx);
+	ft_display_map(&mlx);
 	mlx.mlx = mlx_init();//..............INIT WINDOW
 	if (ft_init_texture(&mlx) < 0)
 	{
 		printf("Wrong texture paths\n");
-		return (-1);
+		return (-6);
 	}
 	mlx.win = mlx_new_window(mlx.mlx, S_WIDTH, S_HEIGHT, "cub3D");
 

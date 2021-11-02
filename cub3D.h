@@ -171,6 +171,7 @@ int	ft_space(char *str);
 int	ft_check_text(char *str, char *text);
 char	*ft_text(char *str);
 //...........................................................PARSING MAP
+void	ft_replace_dir(t_mlx *mlx);
 char    *ft_fill_line(t_mlx *mlx, char *str);
 void	ft_replace_spaces(char *str);
 void    ft_fill_grid(t_mlx *mlx);

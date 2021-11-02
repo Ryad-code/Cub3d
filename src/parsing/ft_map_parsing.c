@@ -33,11 +33,30 @@ void    ft_replace_spaces(char *str)
 	{
 		if (str[i] == ' ')
 			str[i] = '1';
-		else if (str[i] == 'N' || str[i] == 'E' || str[i] == 'W' || str[i] == 'S')
-			str[i] = '0';
 		i++;
 	}
 
+}
+
+void	ft_replace_dir(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (mlx->map.grid[j])
+	{
+		while (i < ft_strlen(mlx->map.grid[j]))
+		{
+			if (mlx->map.grid[j][i] == 'N'|| mlx->map.grid[j][i] == 'E'||
+				mlx->map.grid[j][i] == 'S'|| mlx->map.grid[j][i] == 'W')
+				mlx->map.grid[j][i] = '0';
+			i++;
+		}
+		i = 0;
+		j++;
+	}
 }
 
 void	ft_fill_grid(t_mlx *mlx)
@@ -58,17 +77,30 @@ int	ft_check_map_sides(t_mlx *mlx)
 	int	i;
 
 	i = 0;
-	while (i < mlx->map.g_height)
+	while (i < ft_strlen(mlx->map.grid[0]))
 	{
-		if (mlx->map.grid[i][0] == '0' || mlx->map.grid[i][mlx->map.g_width - 1] == '0')
+		if (mlx->map.grid[0][i] != '1' && mlx->map.grid[0][i] != ' ')
+		{
+			printf("i = %d\n", i);
 			return (-1);
+		}
 		i++;
 	}
 	i = 0;
-	while (i < mlx->map.g_width)
+	while (i < ft_strlen(mlx->map.grid[mlx->map.g_height - 1]))
 	{
-		if (mlx->map.grid[0][i] == '0' || mlx->map.grid[mlx->map.g_height - 1][i] == '0')
-			return (-1);
+		if (mlx->map.grid[mlx->map.g_height - 1][i] != '1' && mlx->map.grid[mlx->map.g_height - 1][i] != ' ')
+			return (-2);
+		i++;
+	}
+	i = 0;
+	while (i < mlx->map.g_height)
+	{
+		if (mlx->map.grid[i][0] != '1' && mlx->map.grid[i][0] != ' ')
+				return (-3);
+		if (mlx->map.grid[i][ft_strlen(mlx->map.grid[i]) - 1] != '1' &&
+			mlx->map.grid[i][ft_strlen(mlx->map.grid[i]) - 1] != ' ')
+			return (-4);
 		i++;
 	}
 	return (0);
@@ -83,19 +115,22 @@ int	ft_check_inside_grid(t_mlx *mlx)
 	j = 1;
 	while (j < mlx->map.g_height - 1)
 	{
-		while (i < mlx->map.g_width - 1)
+		while (i < ft_strlen(mlx->map.grid[j]))
 		{
-			if (mlx->map.grid[j - 1][i] != '1' && mlx->map.grid[j - 1][i] != '0')
-				return (-1);
-			if (mlx->map.grid[j + 1][i] != '1' && mlx->map.grid[j + 1][i] != '0')
-				return (-1);
-			if (mlx->map.grid[j][i - 1] != '1' && mlx->map.grid[j][i - 1] != '0')
-				return (-1);
-			if (mlx->map.grid[j][i + 1] != '1' && mlx->map.grid[j][i + 1] != '0')
-				return (-1);
-
+			if (mlx->map.grid[j][i] == '0')
+			{
+				if (mlx->map.grid[j - 1][i] != '1' && mlx->map.grid[j - 1][i] != '0')
+					return (-1);
+				if (mlx->map.grid[j + 1][i] != '1' && mlx->map.grid[j + 1][i] != '0')
+					return (-2);
+				if (mlx->map.grid[j][i - 1] != '1' && mlx->map.grid[j][i - 1] != '0')
+					return (-3);
+				if (mlx->map.grid[j][i + 1] != '1' && mlx->map.grid[j][i + 1] != '0')
+					return (-4);
+			}
 			i++;
 		}
+		i = 0;
 		j++;
 	}
 	return (0);
@@ -106,10 +141,12 @@ int	ft_parse_map(t_mlx *mlx)
 	int	out;
 	int	in;
 
-	ft_fill_grid(mlx);
+	ft_replace_dir(mlx);
 	out = ft_check_map_sides(mlx);
 	in = ft_check_inside_grid(mlx);
+//	printf("out = %d | in = %d\n", out, in);
 	if (in < 0 || out < 0)
 		return (-1);
+	ft_fill_grid(mlx);
 	return (0);
 }

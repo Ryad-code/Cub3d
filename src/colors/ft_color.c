@@ -145,7 +145,8 @@ char	*ft_get_colors(char *str)
 	int	j;
 	char	*res;
 
-	i = ft_space(str);;
+//	printf("str = %s\n", str);
+	i = ft_space(str);
 	j = 0;
 	res = malloc(sizeof(char) * 12);
 	if (res == NULL)
@@ -205,14 +206,10 @@ int	ft_check_colors(t_color *color)
 
 int	ft_parse_colors(t_mlx *mlx)
 {
-	if (ft_get_colors(mlx->arg.c.str) == NULL)
-		return (-1);
-	if (ft_get_colors(mlx->arg.c.str) == NULL)
-		return (-1);
 	mlx->arg.c.str = ft_get_colors(mlx->arg.c.str);
 	mlx->arg.f.str = ft_get_colors(mlx->arg.f.str);
-	printf("%s\n", mlx->arg.c.str);
-	printf("%s\n", mlx->arg.f.str);
+	if (mlx->arg.c.str == NULL || mlx->arg.f.str == NULL)
+		return (-1);
 	if (ft_check_color_str(mlx->arg.c.str) < 0)
 		return (-1);
 	if (ft_check_color_str(mlx->arg.f.str) < 0)
