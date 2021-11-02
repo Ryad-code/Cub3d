@@ -123,37 +123,21 @@ int	ft_check_color_str(char *str)
 	res = 0;
 	res1 = 0;
 	if ((str[i] != 'F' && str[i] != 'C') || ft_strlen(&str[i]) < 5)
-	{
-		printf("ici1\n");
 		return (-1);
-	}
 	i++;
 	while (str[i])
 	{
 		if (str[i] != ',' && str[i] != ' ' && ft_is_num(str[i]) < 0)
-		{
-			printf("ici2\n");
 			return (-1);
-		}
 		if (str[i] == ',')
 			res++;
-		else if (ft_is_num(str[i] == 0))
-		{
-			printf("[%c] \n", str[i]);
+		else if (ft_is_num(str[i]) == 0)
 			res1++;
-		}
 		i++;
 	}
 	if (res != 2)
-	{
-		printf("ici3\n");
 		return (-2);
-	}
-	printf("res1 = %d\n", res1);
 	if (res1 < 3 || res1 > 9)
-	{
-		printf("ici4\n");
-	}
 		return (-3);
 	return (0);
 }
@@ -224,25 +208,14 @@ int	ft_check_colors(t_color *color)
 
 int	ft_parse_colors(t_mlx *mlx)
 {
-	printf("str_c = %s\n", mlx->arg.c.str);
-	printf("str_f = %s\n", mlx->arg.f.str);
 	if (ft_check_color_str(mlx->arg.c.str) < 0)
 		return (-1);
-//	if (ft_check_color_str(mlx->arg.f.str) < 0)
-//		return (-1);
+	if (ft_check_color_str(mlx->arg.f.str) < 0)
+		return (-1);
 	mlx->arg.c.str = ft_get_colors(mlx->arg.c.str);
 	mlx->arg.f.str = ft_get_colors(mlx->arg.f.str);
-	printf("str_c = %s\n", mlx->arg.c.str);
-//	printf("str_f = %s\n", mlx->arg.f.str);
 	if (mlx->arg.c.str == NULL || mlx->arg.f.str == NULL)
-	{
-		printf("ici\n");
 		return (-1);
-	}
-//	if (ft_check_color_str(mlx->arg.c.str) < 0)
-//		return (-1);
-//	if (ft_check_color_str(mlx->arg.f.str) < 0)
-//		return (-1);
 	if (ft_check_colors(&mlx->arg.c) < 0)
 		return (-1);
 	if (ft_check_colors(&mlx->arg.f) < 0)

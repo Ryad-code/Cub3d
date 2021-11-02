@@ -7,7 +7,6 @@ int main(int ac, char **av)
 	mlx.frame = 1;
 
 	ft_init_data(&mlx);
-	printf("o = %d\n", ft_is_num(' '));
 	if (ft_args(ac, av) < 0)
 	{
 		printf("Error1\n");
