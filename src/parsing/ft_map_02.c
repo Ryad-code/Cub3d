@@ -138,22 +138,6 @@ void	ft_get_g_height(t_mlx *mlx, char *file)
 	close(fd);
 }
 
-void	ft_get_g_width(t_mlx *mlx)
-{
-	int i;
-	int width;
-
-	i = 0;
-	width = 0;
-	while (i < mlx->map.g_height)
-	{
-		if (ft_strlen(mlx->map.grid[i]) > width)
-			width = ft_strlen(mlx->map.grid[i]);
-		i++;
-	}
-	mlx->map.g_width = width;
-}
-
 int	ft_get_map(t_mlx *mlx, char *file)
 {
 	int	i;
@@ -181,7 +165,6 @@ int	ft_get_map(t_mlx *mlx, char *file)
 	mlx->map.grid[i] = NULL;
 	free(line);
 	close(fd);
-	ft_get_g_width(mlx);
 	return (res);
 }
 
