@@ -5,7 +5,7 @@ void	ft_keycode(int keycode, t_mlx *mlx)
 	(void)mlx;
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
+		ft_free_data(mlx);
 		exit(0);
 	}
 	ft_turn(keycode, mlx);
@@ -38,11 +38,11 @@ void	ft_move(int keycode, t_mlx *mlx)
 			tmp =  (PI / 180) * (mlx->player.angle + 90);
 		else if (keycode == 65364)
 			tmp =  (PI / 180) * (mlx->player.angle + 180);
-		if (mlx->map.grid[(int)(mlx->player.y + (sin(tmp) / 50))]
-			[(int)(mlx->player.x + (cos(tmp) / 50))] != '1')
+		if (mlx->map.grid[(int)(mlx->player.y + (sin(tmp) / 25))]
+			[(int)(mlx->player.x + (cos(tmp) / 25))] != '1')
 		{
-			mlx->player.x = (mlx->player.x + (cos(tmp) / 50));
-			mlx->player.y = (mlx->player.y + (sin(tmp) / 50));
+			mlx->player.x = (mlx->player.x + (cos(tmp) / 25));
+			mlx->player.y = (mlx->player.y + (sin(tmp) / 25));
 		}
 	}
 }

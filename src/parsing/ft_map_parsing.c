@@ -144,7 +144,6 @@ int	ft_parse_map(t_mlx *mlx)
 	ft_replace_dir(mlx);
 	out = ft_check_map_sides(mlx);
 	in = ft_check_inside_grid(mlx);
-//	printf("out = %d | in = %d\n", out, in);
 	if (in < 0 || out < 0)
 		return (-1);
 	ft_fill_grid(mlx);

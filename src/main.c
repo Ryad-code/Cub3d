@@ -6,7 +6,8 @@ int main(int ac, char **av)
 
 	mlx.frame = 1;
 
-
+	ft_init_data(&mlx);
+	printf("o = %d\n", ft_is_num(' '));
 	if (ft_args(ac, av) < 0)
 	{
 		printf("Error1\n");
@@ -14,23 +15,25 @@ int main(int ac, char **av)
 	}
 	if (ft_get_infos(&mlx, av[1]) < 0)
 	{
+		ft_free_data(&mlx);
 		printf("Error2\n");
 		return (-2);
 	}
-	ft_display_map(&mlx);
-	printf("\n");
 	if (ft_parse_text(&mlx) < 0)
 	{
+		ft_free_data(&mlx);
 		printf("Error3\n");
 		return (-3);
 	}
 	if (ft_parse_map(&mlx) < 0)
 	{
+		ft_free_data(&mlx);
 		printf("Error4\n");
 		return (-4);
 	}
 	if (ft_parse_colors(&mlx) < 0)
 	{
+		ft_free_data(&mlx);
 		printf("Error5\n");
 		return(-5);
 	}
@@ -38,6 +41,7 @@ int main(int ac, char **av)
 	mlx.mlx = mlx_init();//..............INIT WINDOW
 	if (ft_init_texture(&mlx) < 0)
 	{
+		ft_free_data(&mlx);
 		printf("Wrong texture paths\n");
 		return (-6);
 	}
@@ -47,17 +51,10 @@ int main(int ac, char **av)
 	mlx.buff01.addr = mlx_get_data_addr(mlx.buff01.img, &mlx.buff01.bpp,
 		&mlx.buff01.l_len, &mlx.buff01.endian);
 //............................................................................
-	if (ft_init_texture(&mlx) < 0)
-	{
-		printf("Wrong texture paths\n");
-		return (-1);
-	}
 	ft_vector(&mlx, &mlx.buff01);//........................................3D DISPLAY
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.buff01.img, 0, 0);
 	
 	mlx_hook(mlx.win, 2, 1L<<0, ft_next_frame, &mlx);//....................KEY_HOOK
 	mlx_loop(mlx.mlx);
-	free(mlx.arg.c.str);
-	free(mlx.arg.f.str);
 	return (0);
 }

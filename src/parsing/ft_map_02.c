@@ -72,8 +72,10 @@ int	ft_get_text(t_mlx *mlx, char *file)
 		}
 		if (res < 6)
 			i++;
+		free(line);
 	}
 	close(fd);
+	free(line);
 	if (res != 6)
 		return (-1);
 	return (i);
@@ -128,7 +130,9 @@ void	ft_get_g_height(t_mlx *mlx, char *file)
 				width = ft_strlen(line);
 			height++;
 		}
+		free(line);
 	}
+	free(line);
 	mlx->map.g_width = width;
 	mlx->map.g_height = height;
 	close(fd);
@@ -171,9 +175,11 @@ int	ft_get_map(t_mlx *mlx, char *file)
 		{	mlx->map.grid[i] = ft_strdup(line);
 			i++;
 		}
+		free(line);
 		res++;
 	}
 	mlx->map.grid[i] = NULL;
+	free(line);
 	close(fd);
 	ft_get_g_width(mlx);
 	return (res);

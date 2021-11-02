@@ -119,22 +119,41 @@ int	ft_check_color_str(char *str)
 	int	res;
 	int	res1;
 
-	i = 0;
+	i = ft_space(str);
 	res = 0;
 	res1 = 0;
+	if ((str[i] != 'F' && str[i] != 'C') || ft_strlen(&str[i]) < 5)
+	{
+		printf("ici1\n");
+		return (-1);
+	}
+	i++;
 	while (str[i])
 	{
-		if (str[i] != ',' && ft_is_num(str[i]) < 0)
+		if (str[i] != ',' && str[i] != ' ' && ft_is_num(str[i]) < 0)
+		{
+			printf("ici2\n");
 			return (-1);
+		}
 		if (str[i] == ',')
 			res++;
 		else if (ft_is_num(str[i] == 0))
+		{
+			printf("[%c] \n", str[i]);
 			res1++;
+		}
 		i++;
 	}
 	if (res != 2)
+	{
+		printf("ici3\n");
 		return (-2);
+	}
+	printf("res1 = %d\n", res1);
 	if (res1 < 3 || res1 > 9)
+	{
+		printf("ici4\n");
+	}
 		return (-3);
 	return (0);
 }
@@ -145,7 +164,6 @@ char	*ft_get_colors(char *str)
 	int	j;
 	char	*res;
 
-//	printf("str = %s\n", str);
 	i = ft_space(str);
 	j = 0;
 	res = malloc(sizeof(char) * 12);
@@ -164,7 +182,7 @@ char	*ft_get_colors(char *str)
 	}
 	res[j] = '\0';
 	free(str);
-	str = ft_strndup(res, ft_strlen(res));
+	str = ft_strndup_1(res, ft_strlen(res));
 	free(res);
 	return (str);
 }
@@ -206,14 +224,25 @@ int	ft_check_colors(t_color *color)
 
 int	ft_parse_colors(t_mlx *mlx)
 {
-	mlx->arg.c.str = ft_get_colors(mlx->arg.c.str);
-	mlx->arg.f.str = ft_get_colors(mlx->arg.f.str);
-	if (mlx->arg.c.str == NULL || mlx->arg.f.str == NULL)
-		return (-1);
+	printf("str_c = %s\n", mlx->arg.c.str);
+	printf("str_f = %s\n", mlx->arg.f.str);
 	if (ft_check_color_str(mlx->arg.c.str) < 0)
 		return (-1);
-	if (ft_check_color_str(mlx->arg.f.str) < 0)
+//	if (ft_check_color_str(mlx->arg.f.str) < 0)
+//		return (-1);
+	mlx->arg.c.str = ft_get_colors(mlx->arg.c.str);
+	mlx->arg.f.str = ft_get_colors(mlx->arg.f.str);
+	printf("str_c = %s\n", mlx->arg.c.str);
+//	printf("str_f = %s\n", mlx->arg.f.str);
+	if (mlx->arg.c.str == NULL || mlx->arg.f.str == NULL)
+	{
+		printf("ici\n");
 		return (-1);
+	}
+//	if (ft_check_color_str(mlx->arg.c.str) < 0)
+//		return (-1);
+//	if (ft_check_color_str(mlx->arg.f.str) < 0)
+//		return (-1);
 	if (ft_check_colors(&mlx->arg.c) < 0)
 		return (-1);
 	if (ft_check_colors(&mlx->arg.f) < 0)

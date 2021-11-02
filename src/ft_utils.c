@@ -1,5 +1,5 @@
 #include "../cub3D.h"
-
+/*
 char	*ft_strndup(char *str, int n)
 {
 	int	i;
@@ -22,7 +22,7 @@ char	*ft_strndup(char *str, int n)
 	dest[i] = '\0';
 	return (dest);
 }
-
+*/
 char	*ft_strndup_1(char *str, int n)
 {
 	int 	i;
