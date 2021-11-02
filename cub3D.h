@@ -104,7 +104,7 @@ typedef struct	s_mlx
 }			t_mlx;
 //.........................................................UTILS
 char	*ft_strdup(char *str);
-char	*ft_strndup(char *str, int n);
+//char	*ft_strndup(char *str, int n);
 char    *ft_strndup_1(char *str, int n);
 int	ft_atoi(const char *str);
 int	ft_check_file(char *file);
@@ -186,3 +186,9 @@ int	ft_parse_colors(t_mlx *mlx);
 char    *ft_int_to_hex(unsigned long nb);
 long    ft_hexa_to_int(char *str);
 int	ft_convert_rgb(t_color *color);
+//........................................................MEMORY
+void	ft_init_data(t_mlx *mlx);
+void	ft_free_grid(t_map *map);
+void	ft_free_text(t_arg *arg);
+void	ft_free_colors(t_arg *arg);
+void	ft_free_data(t_mlx *mlx);
