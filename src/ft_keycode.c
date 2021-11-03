@@ -26,18 +26,19 @@ void	ft_turn(int keycode, t_mlx *mlx)
 
 void	ft_move(int keycode, t_mlx *mlx)
 {
-	double tmp;
-	
-	if (keycode == 65361 || keycode == 65362 || keycode == 65363 || keycode == 65364)
+	double	tmp;
+
+	if (keycode == 65361 || keycode == 65362
+		|| keycode == 65363 || keycode == 65364)
 	{
 		if (keycode == 65362)
 			tmp = (PI / 180) * mlx->player.angle;
 		else if (keycode == 65361)
-			tmp =  (PI / 180) * (mlx->player.angle + 270);
+			tmp = (PI / 180) * (mlx->player.angle + 270);
 		else if (keycode == 65363)
-			tmp =  (PI / 180) * (mlx->player.angle + 90);
+			tmp = (PI / 180) * (mlx->player.angle + 90);
 		else if (keycode == 65364)
-			tmp =  (PI / 180) * (mlx->player.angle + 180);
+			tmp = (PI / 180) * (mlx->player.angle + 180);
 		if (mlx->map.grid[(int)(mlx->player.y + (sin(tmp) / 25))]
 			[(int)(mlx->player.x + (cos(tmp) / 25))] != '1')
 		{
