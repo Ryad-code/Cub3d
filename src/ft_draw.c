@@ -2,117 +2,51 @@
 
 void	my_pixel_put(t_img *img, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if ((x >= 0 && x <= S_WIDTH) && (y >= 0 && y <= S_HEIGHT))
 	{
 		dst = img->addr + (y * img->l_len + x * (img->bpp / 8));
-		*(unsigned int*)dst = color;
+		*(unsigned int *)dst = color;
 	}
 }
 
-void	ft_draw_line(t_img *buff, int x, int y)
+void	ft_draw_col_c(t_img *buff, int x, int len, int color)
 {
 	int	i;
 
 	i = 0;
-	while (i < B_SIZE)
+	while (i < len)
 	{
-		my_pixel_put(buff, x, y + i, 0x0000FF);
+		my_pixel_put(buff, x, 0 + i, color);
 		i++;
 	}
 }
 
-void    ft_draw_block(t_img *buff, int x, int y)
+void	ft_draw_col_f(t_img *buff, int x, int len, int color)
 {
 	int	i;
 
 	i = 0;
-	while (i < B_SIZE)
-	{
-		ft_draw_line(buff, x + i, y);
-		i++;
-	}
-}
-
-void	ft_draw_map(t_mlx *mlx, t_img *buff)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (i < mlx->map.g_height)
-	{
-		while (mlx->map.grid[i][j])
-		{
-			if (mlx->map.grid[i][j] == '1')
-				ft_draw_block(buff, j * B_SIZE, i * B_SIZE);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_draw_col(t_img *buff, int x, int y, int len, int color)
-{
-	int i;
-
-	i = 0;
 	while (i < len)
 	{
-		my_pixel_put(buff, x, y + i, color);
+		my_pixel_put(buff, x, (S_HEIGHT / 2) + i, color);
 		i++;
 	}
 }
 
-void    ft_draw_lin(t_img *buff, int x, int y, int len, int color)
+void	ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y)
 {
-	int i;
-
-	i = 0;
-	while (i < len)
-	{
-		my_pixel_put(buff, x + i, y, color);
-		i++;
-	}
-}
-/*
-unsigned int	ft_get_pixel(t_mlx *mlx, int x, int y)
-{
-	return (*(unsigned int*)(mlx->text.addr + (y * mlx->text.l_len + x * (mlx->text.bpp / 8))));
-}
-*/
-void	ft_draw_text(t_mlx *mlx, t_img *buff, int x, int y, int len)
-{
-	int		i;
+	int				i;
+	t_text			*texture;
 	unsigned int	color;
 
 	i = 0;
-	color = 0;
-	(void)mlx;
-	while (i < len)
+	texture = ft_choose_text(mlx);
+	while (i < mlx->ray.f_wall_height)
 	{
-//		color = ft_get_pixel(mlx, x, y);
+		color = ft_get_pixel(mlx, texture, i, mlx->ray.f_wall_height);
 		my_pixel_put(buff, x, y + i, color);
 		i++;
-	}
-}
-
-void	ft_draw_grid(t_mlx *mlx, t_img *buff)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	(void)mlx;
-	while (i < 10)
-	{
-		ft_draw_col(buff, j, 0, 1000, 0xFFFFFF);
-		ft_draw_lin(buff, 0, j, 1000, 0xFFFFFF);
-		i++;
-		j += 100;
 	}
 }

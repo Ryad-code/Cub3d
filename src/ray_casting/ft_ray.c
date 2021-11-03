@@ -46,7 +46,6 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 	int	i;
 	double	angle;
 	double	tmp;
-	int	wall_height;
 
 	i = 0;
 	angle = ft_move_angle(mlx->player.angle, -30);
@@ -56,12 +55,12 @@ void	ft_vector(t_mlx *mlx, t_img *buff)
 		mlx->ray.dist = ft_ray_caster(mlx, mlx->player.x - (int)mlx->player.x, mlx->player.y - (int)mlx->player.y, tmp);
 		mlx->ray.wall_height = (int)nearbyint((1 / mlx->ray.dist) * S_HEIGHT);
 		mlx->ray.wall_height = (int)nearbyint(mlx->ray.wall_height * (1 / cos((PI / 180) * (mlx->player.angle - angle))));
-		wall_height = mlx->ray.wall_height;
+		mlx->ray.f_wall_height = mlx->ray.wall_height;
 		if (mlx->ray.wall_height > S_HEIGHT)
-			wall_height = S_HEIGHT;
-		ft_draw_col(buff, i, 0, (S_HEIGHT - mlx->ray.wall_height) / 2, mlx->arg.f.color);
-		ft_draw_col(buff, i, S_HEIGHT / 2, S_HEIGHT / 2, mlx->arg.c.color);
-		ft_draw_t_col(mlx, buff, i, (S_HEIGHT - wall_height) / 2, wall_height);
+			mlx->ray.f_wall_height = S_HEIGHT;
+		ft_draw_col_c(buff, i, (S_HEIGHT - mlx->ray.wall_height) / 2, mlx->arg.f.color);
+		ft_draw_col_f(buff, i, S_HEIGHT / 2, mlx->arg.c.color);
+		ft_draw_t_col(mlx, buff, i, (S_HEIGHT - mlx->ray.f_wall_height) / 2);
 		angle = ft_move_angle(angle, 0.06);
 		i++;
 	}

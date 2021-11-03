@@ -3,7 +3,7 @@ SO ./textures/concrete2_seamless_diffuse_1k.xpm
 WE ./textures/bricksheight.xpm
 EA ./textures/images.xpm
 
-F 101, 216,     256 
+F 101, 216,     255 
 C 127,127  , 255
 
 111111111111111

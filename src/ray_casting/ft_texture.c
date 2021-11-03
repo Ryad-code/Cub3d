@@ -47,22 +47,6 @@ unsigned int	ft_get_pixel(t_mlx *mlx, t_text *text, int w_pix, int w_size)
 	return *(unsigned int*)(text->addr + (y * text->line_lenght + x * (text->bit_per_pixel / 8)));
 }
 
-void	ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y, int w_size)
-{
-	int		i;
-	t_text		*texture;
-	unsigned int	color;
-
-	i = 0;
-	texture = ft_choose_text(mlx);
-	while (i < w_size)
-	{
-		color = ft_get_pixel(mlx, texture, i, w_size);
-		my_pixel_put(buff, x, y + i, color);
-		i++;
-	}
-}
-
 t_text	*ft_choose_text(t_mlx *mlx)
 {
 	if (mlx->player.dir == 'e')

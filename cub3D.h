@@ -29,6 +29,7 @@ typedef struct	s_ray
 {
 	double	dist;
 	int	wall_height;
+	int	f_wall_height;
 	double	hit_x;
 	double	hit_y;
 	char	dir;
@@ -106,20 +107,15 @@ typedef struct	s_mlx
 }			t_mlx;
 //.........................................................UTILS
 char	*ft_strdup(char *str);
-//char	*ft_strndup(char *str, int n);
 char    *ft_strndup_1(char *str, int n);
 int	ft_atoi(const char *str);
 int	ft_check_file(char *file);
 int	ft_args(int ac , char **av);
 //.........................................................DRAW
 void	my_pixel_put(t_img *img, int x, int y, int color);
-void    ft_draw_line(t_img *buff, int x, int y);
-void    ft_draw_block(t_img *buff, int x, int y);
-void    ft_draw_map(t_mlx *mlx, t_img *buff);
-void	ft_draw_col(t_img *buff, int x, int y, int len, int color);
-void    ft_draw_lin(t_img *buff, int x, int y, int len, int color);
-void	ft_draw_text(t_mlx *mlx, t_img *buff, int x, int y, int len);
-void	ft_draw_grid(t_mlx *mlx, t_img *buff);
+void	ft_draw_col_c(t_img *buff, int x, int len, int color);
+void	ft_draw_col_f(t_img *buff, int x, int len, int color);
+void	ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y);
 //...........................................................RAY
 void	ft_vision(t_mlx *mlx, t_img *buff);
 void    ft_raycast(t_mlx *mlx, t_img *buff, float angle);
@@ -153,7 +149,6 @@ char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 int		ft_init_texture(t_mlx *mlx);
 double		ft_hit(t_mlx *mlx);
 unsigned int    ft_get_pixel(t_mlx *mlx, t_text *text, int w_pix, int w_size);
-void		ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y, int w_size);
 t_text		*ft_choose_text(t_mlx *mlx);
 //...........................................................FRAME
 int	ft_next_frame(int keycode, t_mlx *mlx);
