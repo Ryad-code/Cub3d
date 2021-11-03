@@ -28,6 +28,30 @@ int	ft_is_opt(char *opt, char *line)
 	return (-1);
 }
 
+int	ft_count_lines(t_mlx *mlx, char *file)
+{
+	int	fd;
+	int	nb_line;
+	int	nb_empty;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	nb_line = 0;
+	nb_empty = 0;
+	while (get_next_line(fd, &line))
+	{
+		if (ft_empty_line(line) == 0)
+			nb_empty++;
+		nb_line++;
+		free(line);
+	}
+	close(fd);
+	free(line);
+	mlx->arg.nb_line = nb_line;
+	mlx->arg.nb_empty = nb_empty;
+	return (0);
+}
+
 int	ft_get_text(t_mlx *mlx, char *file)
 {
 	int	i;
@@ -114,22 +138,26 @@ int	ft_is_line(char *str)
 
 void	ft_get_g_height(t_mlx *mlx, char *file)
 {
+	int	vide;
 	int	fd;
 	int	height;
 	int	width;
 	char	*line;
 
+	vide = 0;
 	fd = open(file, O_RDONLY);
 	height = 0;
 	width = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (ft_is_line(line) == 0)
+		if (ft_is_line(line) == 0 && vide == 0)
 		{
 			if (ft_strlen(line) > width)
 				width = ft_strlen(line);
 			height++;
 		}
+		if (ft_is_line(line) != 0 && height > 0)
+			vide = 1;
 		free(line);
 	}
 	free(line);
@@ -148,7 +176,6 @@ int	ft_get_map(t_mlx *mlx, char *file)
 	i = 0;
 	res = 0;
 	fd = open(file, O_RDONLY);
-	ft_get_g_height(mlx, file);
 	line = NULL;
 	mlx->map.grid = malloc(sizeof(char *) * (mlx->map.g_height + 1));
 	if (mlx->map.grid == NULL)
@@ -174,6 +201,12 @@ int	ft_get_infos(t_mlx *mlx, char *file)
 	int map;
 	int position;
 
+	ft_count_lines(mlx, file);
+	ft_get_g_height(mlx, file);
+	if (mlx->arg.nb_line > (mlx->arg.nb_empty + mlx->map.g_height + 6))
+		return(-1);
+	if (mlx->map.g_height < 2 || mlx->map.g_width < 2)
+		return (-1);
 	text = ft_get_text(mlx, file);
 	map = ft_get_map(mlx, file);
 	position = ft_get_position(mlx);

@@ -181,7 +181,7 @@ int	ft_check_colors(t_color *color)
 	while (color->str[i] && ft_is_num(color->str[i]) == 0)
 		i++;
 	color->col1 = ft_strndup_1(color->str, i);
-	if (color->col1 == NULL || ft_strlen(color->col1) < 1)
+	if (color->col1 == NULL || ft_strlen(color->col1) < 1 || atoi(color->col1) > 255)
 		return (-1);
 	i++;
 	while (color->str[i] && ft_is_num(color->str[i]) == 0)
@@ -190,7 +190,7 @@ int	ft_check_colors(t_color *color)
 		j++;
 	}
 	color->col2 = ft_strndup_1(&color->str[i - j], j);
-	if (color->col2 == NULL || ft_strlen(color->col2) < 1)
+	if (color->col2 == NULL || ft_strlen(color->col2) < 1 || atoi(color->col2) > 255)
 		return (-1);
 	i++;
 	j = 0;
@@ -200,7 +200,7 @@ int	ft_check_colors(t_color *color)
 		j++;
 	}
 	color->col3 = ft_strndup_1(&color->str[i - j], j);
-	if (color->col3 == NULL || ft_strlen(color->col3) < 1)
+	if (color->col3 == NULL || ft_strlen(color->col3) < 1 || atoi(color->col3) > 255)
 		return (-1);
 	return (0);
 }
@@ -227,4 +227,3 @@ int	ft_parse_colors(t_mlx *mlx)
 
 	return (0);
 }
-

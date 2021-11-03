@@ -24,11 +24,11 @@ double	ft_hit(t_mlx *mlx)
 
 	if (mlx->player.dir == 'e')
 		hit = mlx->player.f_hit_y - (int)mlx->player.f_hit_y;
-	else if (mlx->player.dir == 's')
+	else if (mlx->player.dir == 'n')
 		hit = mlx->player.f_hit_x - (int)mlx->player.f_hit_x;
 	else if (mlx->player.dir == 'w')
 		hit = (int)mlx->player.f_hit_y + 1 - mlx->player.f_hit_y;
-	else if (mlx->player.dir == 'n')
+	else if (mlx->player.dir == 's')
 		hit = (int)mlx->player.f_hit_x + 1 - mlx->player.f_hit_x;
 	return (hit);	
 }

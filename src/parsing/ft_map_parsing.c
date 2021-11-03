@@ -80,10 +80,7 @@ int	ft_check_map_sides(t_mlx *mlx)
 	while (i < ft_strlen(mlx->map.grid[0]))
 	{
 		if (mlx->map.grid[0][i] != '1' && mlx->map.grid[0][i] != ' ')
-		{
-			printf("i = %d\n", i);
 			return (-1);
-		}
 		i++;
 	}
 	i = 0;
@@ -121,12 +118,20 @@ int	ft_check_inside_grid(t_mlx *mlx)
 			{
 				if (mlx->map.grid[j - 1][i] != '1' && mlx->map.grid[j - 1][i] != '0')
 					return (-1);
-				if (mlx->map.grid[j + 1][i] != '1' && mlx->map.grid[j + 1][i] != '0')
+				if (mlx->map.grid[j - 1][i - 1] != '1' && mlx->map.grid[j - 1][i - 1] != '0')
 					return (-2);
-				if (mlx->map.grid[j][i - 1] != '1' && mlx->map.grid[j][i - 1] != '0')
+				if (mlx->map.grid[j - 1][i + 1] != '1' && mlx->map.grid[j - 1][i + 1] != '0')
 					return (-3);
-				if (mlx->map.grid[j][i + 1] != '1' && mlx->map.grid[j][i + 1] != '0')
+				if (mlx->map.grid[j + 1][i] != '1' && mlx->map.grid[j + 1][i] != '0')
 					return (-4);
+				if (mlx->map.grid[j + 1][i - 1] != '1' && mlx->map.grid[j + 1][i - 1] != '0')
+					return (-5);
+				if (mlx->map.grid[j + 1][i + 1] != '1' && mlx->map.grid[j + 1][i + 1] != '0')
+					return (-6);
+				if (mlx->map.grid[j][i - 1] != '1' && mlx->map.grid[j][i - 1] != '0')
+					return (-7);
+				if (mlx->map.grid[j][i + 1] != '1' && mlx->map.grid[j][i + 1] != '0')
+					return (-8);
 			}
 			i++;
 		}

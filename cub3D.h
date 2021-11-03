@@ -84,6 +84,8 @@ typedef struct	s_arg
 	char	*ea;
 	t_color	f;
 	t_color	c;
+	int	nb_line;
+	int	nb_empty;
 }		t_arg;
 
 typedef struct	s_mlx
@@ -171,6 +173,8 @@ int	ft_space(char *str);
 int	ft_check_text(char *str, char *text);
 char	*ft_text(char *str);
 //...........................................................PARSING MAP
+int	ft_empty_line(char *str);
+int	ft_count_lines(t_mlx *mlx, char *file);
 void	ft_replace_dir(t_mlx *mlx);
 char    *ft_fill_line(t_mlx *mlx, char *str);
 void	ft_replace_spaces(char *str);
@@ -192,3 +196,5 @@ void	ft_free_grid(t_map *map);
 void	ft_free_text(t_arg *arg);
 void	ft_free_colors(t_arg *arg);
 void	ft_free_data(t_mlx *mlx);
+int	ft_exit(t_mlx *mlx);
+int	ft_checking(t_mlx *mlx, int ac , char **av);
