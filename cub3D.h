@@ -181,8 +181,10 @@ void	ft_replace_dir(t_mlx *mlx);
 char    *ft_fill_line(t_mlx *mlx, char *str);
 void	ft_replace_spaces(char *str);
 void    ft_fill_grid(t_mlx *mlx);
-int	ft_check_map_sides(t_mlx *mlx);
-int     ft_check_inside_grid(t_mlx *mlx);
+int	ft_check_map_sides_1(t_mlx *mlx);
+int     ft_check_map_sides_2(t_mlx *mlx);
+int     ft_check_inside_grid_1(t_mlx *mlx);
+int     ft_check_inside_grid_2(t_mlx *mlx, int i, int j);
 int	ft_parse_map(t_mlx *mlx);
 //............................................................COLORS
 int     ft_is_num(char c);

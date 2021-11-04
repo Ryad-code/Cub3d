@@ -2,7 +2,7 @@
 
 int	ft_space(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str == NULL)
@@ -16,8 +16,8 @@ int	ft_space(char *str)
 
 int	ft_check_text(char *str, char *text)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = ft_space(str);
 	len = ft_strlen(str);
@@ -34,7 +34,7 @@ int	ft_check_text(char *str, char *text)
 
 char	*ft_text(char *str)
 {
-	int i;
+	int		i;
 	char	*tmp;
 
 	i = 0;

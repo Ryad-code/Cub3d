@@ -73,30 +73,27 @@ int	ft_get_color(t_mlx *mlx, char *line, int *res)
 
 void	ft_get_g_dim(t_mlx *mlx, char *file)
 {
-	int		vide;
-	int		fd;
-	int		height;
-	int		width;
+	int		tab[4];
 	char	*line;
 
-	vide = 0;
-	fd = open(file, O_RDONLY);
-	height = 0;
-	width = 0;
-	while (get_next_line(fd, &line))
+	tab[0] = 0;
+	tab[1] = open(file, O_RDONLY);
+	tab[2] = 0;
+	tab[3] = 0;
+	while (get_next_line(tab[1], &line))
 	{
-		if (ft_is_line(line) == 0 && vide == 0)
+		if (ft_is_line(line) == 0 && tab[0] == 0)
 		{
-			if (ft_strlen(line) > width)
-				width = ft_strlen(line);
-			height++;
+			if (ft_strlen(line) > tab[3])
+				tab[3] = ft_strlen(line);
+			tab[2]++;
 		}
-		if (ft_is_line(line) != 0 && height > 0)
-			vide = 1;
+		if (ft_is_line(line) != 0 && tab[2] > 0)
+			tab[0] = 1;
 		free(line);
 	}
 	free(line);
-	mlx->map.g_width = width;
-	mlx->map.g_height = height;
-	close(fd);
+	mlx->map.g_width = tab[3];
+	mlx->map.g_height = tab[2];
+	close(tab[1]);
 }
