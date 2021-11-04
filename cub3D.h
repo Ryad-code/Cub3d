@@ -27,11 +27,10 @@ typedef struct	s_color
 
 typedef struct	s_ray
 {
+	double	*hypo;
 	double	dist;
 	int	wall_height;
 	int	f_wall_height;
-	double	hit_x;
-	double	hit_y;
 	char	dir;
 }		t_ray;
 
@@ -137,12 +136,20 @@ double  *ft_sw_x(t_mlx *mlx, double x, double y, double angle);
 double  *ft_sw_y(t_mlx *mlx, double x, double y, double angle);
 //..........................................................NW
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);
+double	ft_nw_1(t_mlx *mlx, double x, double y, double angle);
+double	ft_nw_2(t_mlx *mlx, double x, double y, double angle);
 double  *ft_nw_x(t_mlx *mlx, double x, double y, double angle);
+double	ft_nw_x_1(t_mlx *mlx, double x, double y, double angle);
 double  *ft_nw_y(t_mlx *mlx, double x, double y, double angle);
+double	ft_nw_y_1(t_mlx *mlx, double x, double y, double angle);
 //..........................................................NE
 double	ft_ne(t_mlx *mlx, double x, double y, double angle);
+double	ft_ne_1(t_mlx *mlx, double x, double y, double angle);
+double  ft_ne_2(t_mlx *mlx, double x, double y, double angle);
 double  *ft_ne_x(t_mlx *mlx, double x, double y, double angle);
+double	ft_ne_x_1(t_mlx *mlx, double x, double y, double angle);
 double  *ft_ne_y(t_mlx *mlx, double x, double y, double angle);
+double	ft_ne_y_1(t_mlx *mlx, double x, double y, double angle);
 //..........................................................CHECK HIT
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 //...........................................................TEXTURES

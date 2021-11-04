@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/11/04 14:12:52 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/11/04 16:23:12 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ SRCS		=	src/main.c			\
 			src/ray_casting/se/ft_se.c	\
 			src/ray_casting/sw/ft_sw.c	\
 			src/ray_casting/nw/ft_nw.c	\
+			src/ray_casting/nw/ft_nw_x.c	\
+			src/ray_casting/nw/ft_nw_y.c	\
 			src/ray_casting/ne/ft_ne.c	\
+			src/ray_casting//ne/ft_ne_x.c	\
+			src/ray_casting//ne/ft_ne_y.c   \
 			src/ray_casting/ft_texture.c	\
 			src/memory/ft_memory.c		\
 			src/memory/ft_error.c		\
