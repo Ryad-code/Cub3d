@@ -2,11 +2,11 @@
 
 double	ft_east(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (mlx->player.f_hit_x <= mlx->map.g_width
-	&& mlx->map.grid[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x] != '1')
+	while (mlx->player.f_hit_x <= mlx->map.g_width && mlx->map.grid
+		[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x] != '1')
 	{
 		mlx->player.f_hit_x = (int)mlx->player.x + i;
 		mlx->player.f_hit_y = mlx->player.y;
@@ -17,11 +17,11 @@ double	ft_east(t_mlx *mlx)
 
 double	ft_west(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (mlx->player.f_hit_x >= 1
-	&& mlx->map.grid[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x - 1] != '1')
+	while (mlx->player.f_hit_x >= 1 && mlx->map.grid
+		[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x - 1] != '1')
 	{
 		mlx->player.f_hit_x = (int)mlx->player.x - i;
 		mlx->player.f_hit_y = mlx->player.y;
@@ -32,11 +32,11 @@ double	ft_west(t_mlx *mlx)
 
 double	ft_south(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (mlx->player.f_hit_y <= mlx->map.g_height
-	&& mlx->map.grid[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x] != '1')
+	while (mlx->player.f_hit_y <= mlx->map.g_height && mlx->map.grid
+		[(int)mlx->player.f_hit_y][(int)mlx->player.f_hit_x] != '1')
 	{
 		mlx->player.f_hit_x = mlx->player.x;
 		mlx->player.f_hit_y = (int)mlx->player.y + i;
@@ -47,11 +47,11 @@ double	ft_south(t_mlx *mlx)
 
 double	ft_north(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (mlx->player.f_hit_y >= 1
-	&& mlx->map.grid[(int)mlx->player.f_hit_y - 1][(int)mlx->player.f_hit_x] != '1')
+	while (mlx->player.f_hit_y >= 1 && mlx->map.grid
+		[(int)mlx->player.f_hit_y - 1][(int)mlx->player.f_hit_x] != '1')
 	{
 		mlx->player.f_hit_x = mlx->player.x;
 		mlx->player.f_hit_y = (int)mlx->player.y - i;

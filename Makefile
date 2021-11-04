@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/11/04 12:33:05 by mlaouedj         ###   ########.fr        #
+#    Updated: 2021/11/04 14:12:52 by mlaouedj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,16 @@ SRCS		=	src/main.c			\
 			src/parsing/ft_text_parsing.c 	\
 			src/parsing/ft_map_parsing_01.c	\
 			src/parsing/ft_map_parsing_02.c	\
-			src/colors/ft_color.c		\
+			src/colors/ft_color_01.c	\
+			src/colors/ft_color_02.c	\
 			src/colors/ft_convert.c		\
-			src/ray_casting/ft_ray.c 	\
-			src/ray_casting/ft_ray_01.c	\
+			src/ray_casting/ft_ray_01.c 	\
+			src/ray_casting/ft_ray_02.c     \
 			src/ray_casting/ft_direction.c	\
-			src/ray_casting/ft_se.c		\
-			src/ray_casting/ft_sw.c		\
-			src/ray_casting/ft_nw.c		\
-			src/ray_casting/ft_ne.c		\
+			src/ray_casting/se/ft_se.c	\
+			src/ray_casting/sw/ft_sw.c	\
+			src/ray_casting/nw/ft_nw.c	\
+			src/ray_casting/ne/ft_ne.c	\
 			src/ray_casting/ft_texture.c	\
 			src/memory/ft_memory.c		\
 			src/memory/ft_error.c		\

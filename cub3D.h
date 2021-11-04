@@ -117,9 +117,9 @@ void	ft_draw_col_c(t_img *buff, int x, int len, int color);
 void	ft_draw_col_f(t_img *buff, int x, int len, int color);
 void	ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y);
 //...........................................................RAY
-void	ft_vision(t_mlx *mlx, t_img *buff);
-void    ft_raycast(t_mlx *mlx, t_img *buff, float angle);
-void	ft_vector(t_mlx *mlx, t_img *buff);
+double	ft_move_angle(double angle, double move);
+void	ft_vector_1(t_mlx *mlx, t_img *buff);
+void	ft_vector_2(t_mlx *mlx, double angle, double tmp);
 int	ft_angle(double angle);
 double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle);
 //...........................................................DIRECTION
@@ -147,6 +147,7 @@ double  *ft_ne_y(t_mlx *mlx, double x, double y, double angle);
 char	ft_check_hit(t_mlx *mlx, char hit, double x, double y);
 //...........................................................TEXTURES
 int		ft_init_texture(t_mlx *mlx);
+void		ft_init_texture_2(t_mlx *mlx);
 double		ft_hit(t_mlx *mlx);
 unsigned int    ft_get_pixel(t_mlx *mlx, t_text *text, int w_pix, int w_size);
 t_text		*ft_choose_text(t_mlx *mlx);
@@ -189,11 +190,14 @@ int	ft_parse_map(t_mlx *mlx);
 //............................................................COLORS
 int     ft_is_num(char c);
 char    *ft_get_colors(char *str);
-int	ft_check_color(t_color *color);
+int	ft_check_color_str(char *str);
+int	ft_check_colors_1(t_color *color);
+int     ft_check_colors_2(t_color *color, int i, int j);
 int	ft_parse_colors(t_mlx *mlx);
 char    *ft_int_to_hex(unsigned long nb);
 long    ft_hexa_to_int(char *str);
-int	ft_convert_rgb(t_color *color);
+int	ft_convert_rgb_1(t_color *color);
+char	*ft_convert_rgb_2(char *res, char *s1, char *s2, char *s3);
 //........................................................MEMORY
 void	ft_init_data(t_mlx *mlx);
 void	ft_free_grid(t_map *map);

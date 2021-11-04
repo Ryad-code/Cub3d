@@ -1,40 +1,81 @@
 #include "../../cub3D.h"
 
-void	ft_raycast(t_mlx *mlx, t_img *buff, float angle)
+void	ft_init_ray(t_mlx *mlx)
 {
-	int i;
-
-	i = 1;
-	while (i < 60)
-	{
-		my_pixel_put(buff, (int)nearbyint((mlx->player.x  * B_SIZE) + (cos(angle) * i)), (int)nearbyint((mlx->player.y * B_SIZE) + (sin(angle) * i)), 0x0FF00FF);
-		i++;
-	}
+	mlx->player.hit1_x = mlx->player.x;
+	mlx->player.hit1_y = mlx->player.y;
+	mlx->player.hit2_x = mlx->player.x;
+	mlx->player.hit2_y = mlx->player.y;
+	mlx->player.f_hit_x = mlx->player.x;
+	mlx->player.f_hit_y = mlx->player.y;
 }
 
-void	ft_vision(t_mlx *mlx, t_img *buff)
+double	ft_move_angle(double angle, double move)
 {
-	int	i;
-	float	angle;
-	float	tmp;
-//	float	res;
-//......................................................
+	angle = angle + move;
+	if (angle <= 0)
+		angle = 360 + angle;
+	if (angle >= 360)
+		angle = angle - 360;
+	return (angle);
+}
 
-	i = 0;
-	angle = mlx->player.angle + 330;
-	while (i < 1000)
-	{
-		tmp = (PI / 180) * (angle);
-		ft_raycast(mlx, buff, tmp);
-/*		res = ft_get_len(mlx->player.hit1_x - mlx->player.x, mlx->player.hit1_y - mlx->player.y);
-		tmp = (PI / 180) * (mlx->player.angle - angle);
-		res = res * (1 / cos(tmp));
-		if ( res > 1000)
-			res = 1000;
-		ft_draw_col(buff, i, 0, (1000 - res) / 2, 0x0FFFFF);
-//		ft_draw_col(buff, i, (1000 - res) / 2, res, 0x0000FF);
-		ft_draw_text(mlx, buff, i, (1000 - res) / 2, res);//........TEXTURES*/
-		i++;
-		angle = angle + 0.06;
-	}
+int	ft_angle(double angle)
+{
+	if (angle == 0 || angle == 360)
+		return (1);
+	else if (angle == 90)
+		return (2);
+	else if (angle == 180)
+		return (3);
+	else if (angle == 270)
+		return (4);
+	else if (angle > 0 && angle < 90)
+		return (5);
+	else if (angle > 90 && angle < 180)
+		return (6);
+	else if (angle > 180 && angle < 270)
+		return (7);
+	else if (angle > 270 && angle < 360)
+		return (8);
+	return (-1);
+}
+
+double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
+{
+	int		direction;
+	double	hypo;
+
+	direction = ft_angle(angle / (PI / 180));
+	ft_init_ray(mlx);
+	if (direction == 1)
+		hypo = ft_east(mlx);
+	else if (direction == 2)
+		hypo = ft_south(mlx);
+	else if (direction == 3)
+		hypo = ft_west(mlx);
+	else if (direction == 4)
+		hypo = ft_north(mlx);
+	else if (direction == 5)
+		hypo = ft_se(mlx, x, y, angle);
+	else if (direction == 6)
+		hypo = ft_sw(mlx, x, y, angle);
+	else if (direction == 7)
+		hypo = ft_nw(mlx, x, y, angle);
+	else if (direction == 8)
+		hypo = ft_ne(mlx, x, y, angle);
+	return (hypo);
+}
+
+char	ft_check_hit(t_mlx *mlx, char hit, double x, double y)
+{
+	if (hit == 'e')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+	else if (hit == 's')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+	else if (hit == 'w')
+		return (mlx->map.grid[(unsigned int)y][(unsigned int)(x - 1)]);
+	else if (hit == 'n')
+		return (mlx->map.grid[(unsigned int)(y - 1)][(unsigned int)x]);
+	return ('1');
 }

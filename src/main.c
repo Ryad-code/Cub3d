@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	mlx.buff01.img = mlx_new_image(mlx.mlx, S_WIDTH, S_HEIGHT);
 	mlx.buff01.addr = mlx_get_data_addr(mlx.buff01.img, &mlx.buff01.bpp,
 			&mlx.buff01.l_len, &mlx.buff01.endian);
-	ft_vector(&mlx, &mlx.buff01);
+	ft_vector_1(&mlx, &mlx.buff01);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.buff01.img, 0, 0);
 	mlx_hook(mlx.win, 33, (1L << 17), ft_exit, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, ft_next_frame, &mlx);

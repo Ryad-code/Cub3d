@@ -1,4 +1,4 @@
-#include "../../cub3D.h"
+#include "../../../cub3D.h"
 
 double	ft_ne(t_mlx *mlx, double x, double y, double angle)
 {
