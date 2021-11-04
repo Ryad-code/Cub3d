@@ -27,7 +27,7 @@ void	ft_init_data(t_mlx *mlx)
 
 void	ft_free_grid(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (map->grid)
@@ -46,7 +46,7 @@ void	ft_free_text(t_arg *arg)
 {
 	if (arg->no)
 		free(arg->no);
-	if (arg->ea)	
+	if (arg->ea)
 		free(arg->ea);
 	if (arg->so)
 		free(arg->so);
@@ -64,7 +64,6 @@ void	ft_free_colors(t_arg *arg)
 		free(arg->c.col2);
 	if (arg->c.col3)
 		free(arg->c.col3);
-
 	if (arg->f.str)
 		free(arg->f.str);
 	if (arg->f.col1)
@@ -80,7 +79,6 @@ void	ft_free_data(t_mlx *mlx)
 	ft_free_grid(&mlx->map);
 	ft_free_text(&mlx->arg);
 	ft_free_colors(&mlx->arg);
-
 	if (mlx->text_e.img)
 		mlx_destroy_image(mlx->mlx, mlx->text_e.img);
 	if (mlx->text_s.img)
@@ -89,12 +87,10 @@ void	ft_free_data(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->text_w.img);
 	if (mlx->text_n.img)
 		mlx_destroy_image(mlx->mlx, mlx->text_n.img);
-
 	if (mlx->buff01.img)
 		mlx_destroy_image(mlx->mlx, mlx->buff01.img);
 	if (mlx->buff02.img)
 		mlx_destroy_image(mlx->mlx, mlx->buff02.img);
-
 	if (mlx->win)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)

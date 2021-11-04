@@ -160,7 +160,12 @@ void	ft_move(int keycode, t_mlx *mlx);
 void	ft_display_map(t_mlx *mlx);
 //...........................................................FILE INFOS (MAP)
 int     ft_get_direction(char direction);
-int     ft_get_position(t_mlx *mlx);
+int     ft_get_position_1(t_mlx *mlx);
+int     ft_get_position_2(t_mlx *mlx, int i, int j, int *res);
+int	ft_get_opt(t_mlx *mlx, char *file);
+int	ft_get_text(t_mlx *mlx, char *line, int *res);
+int	ft_get_color(t_mlx *mlx, char *line, int *res);
+void	ft_get_g_dim(t_mlx *mlx, char *file);
 int	ft_get_infos(t_mlx *mlx, char *file);
 //...........................................................PARSING TEXT
 int	ft_parse_text(t_mlx *mlx);
@@ -168,7 +173,9 @@ int	ft_space(char *str);
 int	ft_check_text(char *str, char *text);
 char	*ft_text(char *str);
 //...........................................................PARSING MAP
+int	ft_is_opt(char *opt, char *line);
 int	ft_empty_line(char *str);
+int	ft_is_line(char *str);
 int	ft_count_lines(t_mlx *mlx, char *file);
 void	ft_replace_dir(t_mlx *mlx);
 char    *ft_fill_line(t_mlx *mlx, char *str);

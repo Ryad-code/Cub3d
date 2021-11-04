@@ -14,11 +14,11 @@ int	ft_get_direction(char direction)
 		return (-1);
 }
 
-int	ft_get_position(t_mlx *mlx)
+int	ft_get_position_1(t_mlx *mlx)
 {
-	int i;
-	int j;
-	int res;
+	int	i;
+	int	j;
+	int	res;
 
 	i = 0;
 	j = 0;
@@ -27,14 +27,8 @@ int	ft_get_position(t_mlx *mlx)
 	{
 		while (mlx->map.grid[i][j])
 		{
-			if (mlx->map.grid[i][j] != '1' && mlx->map.grid[i][j] != '0' && mlx->map.grid[i][j] != ' ')
-			{
-				mlx->player.x = j + 0.5;
-				mlx->player.y = i + 0.5;
-				mlx->player.angle = ft_get_direction(mlx->map.grid[i][j]);
-				res++;
-			}
-			j++;	
+			res = ft_get_position_2(mlx, i, j, &res);
+			j++;
 		}
 		i++;
 		j = 0;
@@ -44,9 +38,25 @@ int	ft_get_position(t_mlx *mlx)
 	return (0);
 }
 
+int	ft_get_position_2(t_mlx *mlx, int i, int j, int *res)
+{
+	int	index;
+
+	index = *res;
+	if (mlx->map.grid[i][j] != '1' && mlx->map.grid[i][j]
+			!= '0' && mlx->map.grid[i][j] != ' ')
+	{
+		mlx->player.x = j + 0.5;
+		mlx->player.y = i + 0.5;
+		mlx->player.angle = ft_get_direction(mlx->map.grid[i][j]);
+		index++;
+	}
+	return (index);
+}
+
 void	ft_display_map(t_mlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < mlx->map.g_height)
