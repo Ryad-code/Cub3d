@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:24:35 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/11/05 13:24:37 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:06:38 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int	ft_get_map(t_mlx *mlx, char *file)
 
 int	ft_get_infos(t_mlx *mlx, char *file)
 {
+	int	order;
 	int	text;
 	int	map;
 	int	position;
 
+	order = ft_check_order(mlx, file);
 	ft_count_lines(mlx, file);
 	ft_get_g_dim(mlx, file);
 	if (mlx->arg.nb_line > (mlx->arg.nb_empty + mlx->map.g_height + 6))
@@ -54,7 +56,7 @@ int	ft_get_infos(t_mlx *mlx, char *file)
 	text = ft_get_opt(mlx, file);
 	map = ft_get_map(mlx, file);
 	position = ft_get_position_1(mlx);
-	if (text < 0 || map < 0 || position < 0)
+	if (text < 0 || map < 0 || position < 0 || order < text)
 		return (-1);
 	return (0);
 }

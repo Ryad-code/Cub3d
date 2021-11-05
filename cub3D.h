@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:22:47 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/11/05 13:22:51 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:08:18 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ void			ft_display_map(t_mlx *mlx);
 int				ft_get_direction(char direction);
 int				ft_get_position_1(t_mlx *mlx);
 int				ft_get_position_2(t_mlx *mlx, int i, int j, int *res);
+int				ft_check_order(t_mlx *mlx, char *file);
 int				ft_get_opt(t_mlx *mlx, char *file);
 int				ft_get_text(t_mlx *mlx, char *line, int *res);
 int				ft_get_color(t_mlx *mlx, char *line, int *res);

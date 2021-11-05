@@ -6,11 +6,31 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:24:28 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/11/05 13:24:30 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:08:40 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3D.h"
+
+int	ft_check_order(t_mlx *mlx, char *file)
+{
+	int		fd;
+	int		res;
+	char	*line;
+
+	(void)mlx;
+	fd = open(file, O_RDONLY);
+	res = 0;
+	while (get_next_line(fd, &line))
+	{
+		if (ft_is_line(line) != 0)
+			res++;
+		free(line);
+	}
+	close(fd);
+	free(line);
+	return (res);
+}
 
 int	ft_get_opt(t_mlx *mlx, char *file)
 {
