@@ -43,6 +43,7 @@ double	ft_sw_x_1(t_mlx *mlx, double x, double y, double angle)
 		hypo = ((1 - y) + i) / cos(angle - (PI / 2));
 		mlx->player.hit2_x = (int)mlx->player.x + x - sqrt(
 				hypo * hypo - (((1 - y) + i) * ((1 - y) + i)));
+		mlx->player.hit2_y = (int)mlx->player.y + 1 + i;
 		i++;
 	}
 	return (hypo);
