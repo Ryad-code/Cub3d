@@ -128,12 +128,20 @@ double	ft_south(t_mlx *mlx);
 double	ft_north(t_mlx *mlx);
 //..........................................................SE
 double  ft_se(t_mlx *mlx, double x, double y, double angle);
+double	ft_se_1(t_mlx *mlx, double x, double y, double angle);
+double	ft_se_2(t_mlx *mlx, double x, double y, double angle);
 double	*ft_se_x(t_mlx *mlx, double x, double y, double angle);
+double	ft_se_x_1(t_mlx *mlx, double x, double y, double angle);
 double  *ft_se_y(t_mlx *mlx, double x, double y, double angle);
+double	ft_se_y_1(t_mlx *mlx, double x, double y, double angle);
 //..........................................................SW
 double  ft_sw(t_mlx *mlx, double x, double y, double angle);
+double	ft_sw_1(t_mlx *mlx, double x, double y, double angle);
+double	ft_sw_2(t_mlx *mlx, double x, double y, double angle);
 double  *ft_sw_x(t_mlx *mlx, double x, double y, double angle);
+double	ft_sw_x_1(t_mlx *mlx, double x, double y, double angle);
 double  *ft_sw_y(t_mlx *mlx, double x, double y, double angle);
+double	ft_sw_y_1(t_mlx *mlx, double x, double y, double angle);
 //..........................................................NW
 double  ft_nw(t_mlx *mlx, double x, double y, double angle);
 double	ft_nw_1(t_mlx *mlx, double x, double y, double angle);
