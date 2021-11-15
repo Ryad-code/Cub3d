@@ -1,75 +1,115 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/03 16:35:17 by mlaouedj          #+#    #+#             */
-/*   Updated: 2020/06/26 14:50:21 by mlaouedj         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
-
-int	get_line(int fd, t_line *obj, char **line)
-{
-	if ((obj->res = read(fd, obj->buff, BUFFER_SIZE)) < 0)
-		return (-1);
-	obj->buff[obj->res] = '\0';
-	if (!(*line = ft_cat(*line, obj->buff, fdcurs(obj->buff))))
-		return (-1);
-	while (fdcurs(obj->buff) == obj->res)
-	{
-		if ((obj->res = read(fd, obj->buff, BUFFER_SIZE)) < 0)
-			return (-1);
-		if (obj->res == 0)
-			return (0);
-		obj->buff[obj->res] = '\0';
-		if (!(*line = ft_cat(*line, obj->buff, fdcurs(obj->buff))))
-			return (-1);
-	}
-	return (1);
-}
-
-int	ft_main(int fd, char **line, char **rest, t_line *obj)
-{
-	if ((obj->res1 = get_line(fd, obj, line)) == -1)
-		return (-1);
-	if (obj->res1 == 0)
-		return (0);
-	if (fdcurs(obj->buff) != obj->res)
-	{
-		if (!(*rest = ft_strdup("")))
-			return (-1);
-		if (!(*rest = ft_cat(*rest, &obj->buff[fdcurs(obj->buff)],
-		(obj->res - fdcurs(obj->buff)))))
-			return (-1);
-	}
-	return (1);
-}
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*rest;
-	t_line		obj;
+	char		buffer[BUFFER_SIZE + 1];
+	static char	*stack;
+	char		*tmp;
+	int			rdcpt;
 
-	if (fd < 0 || BUFFER_SIZE == 0 || (!line))
+	rdcpt = 0;
+	if (fd < 0 || BUFFER_SIZE == 0 || !line)
 		return (-1);
-	if (!(*line = ft_strdup("")))
-		return (-1);
-	obj.tmp = NULL;
-	if (rest)
+	if (!ft_strchr(stack, '\n'))
 	{
-		obj.res = ft_rest(&rest, line, obj);
-		if (obj.res == -1)
-			return (-1);
-		if (obj.res == 1)
-			return (1);
+		rdcpt = read(fd, buffer, BUFFER_SIZE);
+		while (rdcpt > 0)
+		{
+			if (!(handle_stack(&stack, &tmp, buffer, rdcpt)))
+				return (-1);
+			if (ft_strchr(stack, '\n'))
+				break ;
+			rdcpt = read(fd, buffer, BUFFER_SIZE);
+		}
 	}
-	if ((obj.res1 = ft_main(fd, line, &rest, &obj)) == -1)
-		return (-1);
-	if (obj.res1 == 0)
-		return (0);
+	return (manage_output(&stack, line, rdcpt));
+}
+
+int	handle_stack(char **stack, char **tmp, char *buffer, int rdcpt)
+{
+	buffer[rdcpt] = '\0';
+	if (!(*stack))
+	{
+		*stack = ft_strdup(buffer);
+		if (!(*stack))
+			return (-1);
+	}
+	else
+	{
+		*tmp = ft_strjoin(*stack, buffer);
+		if (!(*tmp))
+		{
+			free(*stack);
+			return (-1);
+		}
+		free(*stack);
+		*stack = ft_strdup(*tmp);
+		if (!(*stack))
+		{
+			free(*tmp);
+			return (-1);
+		}
+		free(*tmp);
+	}
 	return (1);
+}
+
+int	manage_output(char **stack, char **line, int rdcpt)
+{
+	if (rdcpt < 0)
+		return (-1);
+	if (rdcpt == 0 && *stack == NULL)
+	{
+		*line = ft_strdup("");
+		if (!(*line))
+			return (-1);
+		return (0);
+	}
+	else
+		return (extract_line(stack, line));
+}
+
+int	handle_line(char **stack, char **line, char **tmp, int end)
+{
+	*line = ft_substr(*stack, 0, end);
+	if (!(*line))
+	{
+		free(*stack);
+		return (-1);
+	}
+	*tmp = ft_strdup((*stack) + end + 1);
+	if (!(*tmp))
+	{
+		free(*stack);
+		return (-1);
+	}
+	free(*stack);
+	*stack = *tmp;
+	return (1);
+}
+
+int	extract_line(char **stack, char **line)
+{
+	size_t	end;
+	char	*tmp;
+
+	end = 0;
+	while ((*stack)[end] != '\n' && (*stack)[end] != '\0')
+		end++;
+	if ((*stack)[end] == '\n')
+	{
+		return (handle_line(stack, line, &tmp, end));
+	}
+	else
+	{
+		*line = ft_strdup(*stack);
+		if (!(*line))
+		{
+			free(*stack);
+			return (-1);
+		}
+		free(*stack);
+		*stack = NULL;
+		return (0);
+	}
 }
